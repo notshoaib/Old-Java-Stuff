@@ -6,7 +6,7 @@ public class Calculator {
 
 	public double evaluate(String expr) {
 		double result = 0;
-		String re=new String();
+		String re = new String();
 
 		if (expr.length() == 1) {
 
@@ -20,204 +20,192 @@ public class Calculator {
 		}
 
 		else {
-			boolean addition = false;
-			boolean subtraction = false;
+			boolean mulDiv = false;
 
 			for (int i = 0; i < expr.length(); i++) {
-				if (expr.indexOf("*") != -1) {
-//
-				addition = true;
+				if (expr.indexOf("*") != -1 || expr.indexOf("/") != -1) {
+					
+					mulDiv = true;
 				}
-//				if (expr.indexOf("-") != -1) {
-//
-//					subtraction = true;
-//				}
-//
-		}
-//			
-			if (addition){
-				re=evalMulDiv(expr);
-				
-				result=evalAddSub(re);
-		}
-			else{
-				result = evalAddSub(expr);
-			}
-//			}
 			
-//			else if (addition) {
-//				result = evalAddition(expr);
-//			}
-//
-//			else if (subtraction) {
-//				result = evalSubtraction(expr);
-//
-//			}
+			}
+			
+			if (mulDiv) {
+				
+				re = evalMulDiv(expr);
+			
+				result = evalAddSub(re);
+				
+				
+			} else {
+				result = evalAddSub(expr);
+
+			}
+
 			return result;
 		}
 
 	}
 
+//evalMulDiv uses recursion to split the string expr. Each split is processed as division or multiplication and returned as
+//a string with basic addition and subtraction
 	public String evalMulDiv(String expr) {
 		// TODO Auto-generated method stub
 		double multiply = 1;
 		String position;
+		
 		StringTokenizer mul = new StringTokenizer(expr, "*/", true);
-		String finalString="";
 		
+		String finalString = "";
 
-		int start=0;
-		
-		
-		if(plusminusCheck(expr)){
-			
-		String delimiter = "\\+";
-		String[] temp;
-		temp = expr.split(delimiter);
-		String totals[]=new String [temp.length];
-		String checkme=new String();
-		
-		for(int i=0;i<temp.length;i++){
-			checkme=temp[i];
-			
-			totals[i]=evalMulDiv(checkme);
-		//	totals[i]=evalMulDiv(checkme);
-			finalString=finalString+"+"+totals[i];
-		}
-		
-		}
-		
 
-		else{
-			
-		while (mul.hasMoreTokens()) {
-			position = mul.nextToken();
-			
-			
 
-			if (position.equals("*")) {
-				multiply = Double.parseDouble(mul.nextToken()) * multiply;
+		if (plusCheck(expr)) {
+
+			String delimiter = "\\+";
+			
+			String[] temp;
+			
+			temp = expr.split(delimiter);
+			
+			String totals[] = new String[temp.length];
+			
+			String checkme = new String();
+
+			for (int i = 0; i < temp.length; i++) {
 				
+				checkme = temp[i];
 
-				
-			} else if (position.equals("/")) {
-				multiply = multiply / Double.parseDouble(mul.nextToken());
+				totals[i] = evalMulDiv(checkme);
 			
+				finalString = finalString + "+" + totals[i];
+			}
+
+			if (expr.charAt(0) == '+') {
+				finalString = finalString + "-1";
+			}
+		}
+
+		else if (minusCheck(expr)) {
+
+			String delimiter = "-";
+			
+			String[] temp;
+			
+			temp = expr.split(delimiter);
+			
+			String totals[] = new String[temp.length];
+			
+			String checkme = new String();
+			
+			checkme = temp[0];
+			
+			
+			totals[0] = evalMulDiv(checkme);
+			
+			finalString = finalString + totals[0];
+			
+				for (int i = 1; i < temp.length; i++) {
+					checkme = temp[i];
+
+					totals[i] = evalMulDiv(checkme);
+				
+					finalString = finalString + "-" + totals[i];
 			}
 			
-			
-	
+				if (expr.charAt(0) == '-') {
+				finalString = finalString + "-1";
+			}
+		}
+
+		else {
+
+			while (mul.hasMoreTokens()) {
+				position = mul.nextToken();
+
+				if (position.equals("*")) {
+					multiply = Double.parseDouble(mul.nextToken()) * multiply;
+
+				} else if (position.equals("/")) {
+					multiply = multiply / Double.parseDouble(mul.nextToken());
+
+				}
+
 				else {
-				multiply = Double.parseDouble(position);
-				
+					multiply = Double.parseDouble(position);
+
+				}
+
 			}
-			
-		}
-			finalString=Double.toString(multiply);
+			finalString = Double.toString(multiply);
 		}
 
 		return finalString;
 	}
-
-private boolean plusminusCheck(String expr) {
-	boolean hasPlus=false;
-	for(int i=0;i<expr.length();i++){
+//minusCheck checks if a minus sign is present in the expression
+	private boolean minusCheck(String expr) {
 		
-		if(expr.contains("+")){
-			
-			hasPlus=true;
+		boolean hasMinus = false;
+		for (int i = 0; i < expr.length(); i++) {
+
+			if (expr.contains("-")) {
+
+				hasMinus = true;
+			}
 		}
-	}
 
-	return hasPlus;
-		
-	}
+		return hasMinus;
 
-//	public double evalAddition(String expr) {
-//		double result = 0;
-//		String total = null;
-//
-//		StringTokenizer add = new StringTokenizer(expr, "+");
-//
-//		while (add.hasMoreTokens()) {
-//
-//			total = add.nextToken();
-//			result = Double.parseDouble(total) + result;
-//
-//		}
-//
-//		return result;
-//
-//	}
-//
-//	public double evalSubtraction(String expr) {
-//		StringTokenizer sub = new StringTokenizer(expr, "-");
-//		double result = 0;
-//
-//		String[] difference = new String[sub.countTokens()];
-//		int i = 0;
-//		while (sub.hasMoreTokens()) {
-//
-//			difference[i] = sub.nextToken();
-//			i++;
-//
-//		}
-//		result = Double.parseDouble(difference[0]) * 2;
-//		for (int j = 0; j < difference.length; j++) {
-//
-//		
-//			result = result - Double.parseDouble(difference[j]);
-//			System.out.println(result);
-//
-//		}
-//		return result;
-//	}
-	
-	public double evalAddSub(String expr){
-		double result=0;
+	}
+	//plusCheck checks if a plus sign is present in the expression
+	private boolean plusCheck(String expr) {
 		
+		boolean hasPlus = false;
+		for (int i = 0; i < expr.length(); i++) {
+
+			if (expr.contains("+")) {
+
+				hasPlus = true;
+			}
+		}
+
+		return hasPlus;
+
+	}
+	//evalAddSub processes the expression using a string tokenizer and preforms the basic addition or subtaction
+	public double evalAddSub(String expr) {
+		double result = 0;
+
 		double digit;
 		String number = null;
-		String newString=null;
-		StringTokenizer addSub = new StringTokenizer(expr,"+-%*",true);
 		
-		double prev=0;
-		
-		String previous;
-		
+		StringTokenizer addSub = new StringTokenizer(expr, "+-", true);
 
-	
 
 		while (addSub.hasMoreTokens()) {
 
-			
 			number = addSub.nextToken();
-			
-			if(number.equals("+")){
-				
-			result = Double.parseDouble(addSub.nextToken()) + result;
-			
+
+			if (number.equals("+")) {
+
+				result = Double.parseDouble(addSub.nextToken()) + result;
+
 			}
-			
-			else if(number.equals("-")){
-				
-				result=result-Double.parseDouble(addSub.nextToken());
-				
+
+			else if (number.equals("-")) {
+
+				result = result - Double.parseDouble(addSub.nextToken());
+
 			}
-			
-		
-		
-			else{
-				digit=Double.parseDouble(number);
-				result=result+digit;
+
+			else {
+				digit = Double.parseDouble(number);
+				result = result + digit;
+			}
 		}
-		}
-		
-		
-//			System.out.println(result);
+
 		return result;
-		
-		
+
 	}
-	
+
 }

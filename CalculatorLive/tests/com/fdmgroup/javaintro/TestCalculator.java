@@ -66,18 +66,28 @@ public class TestCalculator {
 	public void testEvaluateMultiply() {
 
 		Calculator calc = new Calculator();
-		double result = calc.evaluate("9*2+2*2*10+5");
+		double result = calc.evaluate("9*2+2*2*10/5+5");
 
-		assertTrue(result == 63.0);
+		assertTrue(result == 31.0);
 
 	}
-//	@Test
-//	public void testEvaluateDivide() {
-//
-//		Calculator calc = new Calculator();
-//		double result = calc.evaluate("2*9/3*4/2");
-//
-//		assertTrue(result == 12.0);
-//
-//	}
+	@Test
+	public void testEvaluateDivide() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("9/3*4/2");
+
+		assertTrue(result == 6.0);
+
+	}
+	@Test
+	public void testEvaluateAll() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("-5*2-2*3+4/2+1-1+7-3");
+
+		assertTrue(result ==-10.0);
+
+	}
+
 }
