@@ -5,8 +5,11 @@ import java.util.StringTokenizer;
 public class Calculator {
 
 	public double evaluate(String expr) {
+
+		boolean makeNeg=false;
 		double result = 0;
 		String re = new String();
+		int counter=0;
 
 		if (expr.length() == 1) {
 
@@ -30,6 +33,16 @@ public class Calculator {
 			
 			}
 			
+			for(int i=0;i<expr.length(); i++){
+				if(expr.charAt(i)=='-'){
+					counter++;
+				}
+			}
+			
+			if(counter%2==1){
+				makeNeg=true;
+			}
+			
 			if (mulDiv) {
 				
 				re = evalMulDiv(expr);
@@ -41,7 +54,13 @@ public class Calculator {
 				result = evalAddSub(expr);
 
 			}
-
+			
+//			if(makeNeg){
+//				return result*(-1);
+//			}	
+//			
+//			else
+			System.out.println(makeNeg);
 			return result;
 		}
 
@@ -53,6 +72,7 @@ public class Calculator {
 		// TODO Auto-generated method stub
 		double multiply = 1;
 		String position;
+		String positionAhead;
 		
 		StringTokenizer mul = new StringTokenizer(expr, "*/", true);
 		
@@ -75,6 +95,8 @@ public class Calculator {
 			for (int i = 0; i < temp.length; i++) {
 				
 				checkme = temp[i];
+				
+
 
 				totals[i] = evalMulDiv(checkme);
 			
@@ -105,13 +127,25 @@ public class Calculator {
 			
 			finalString = finalString + totals[0];
 			
+			
 				for (int i = 1; i < temp.length; i++) {
 					checkme = temp[i];
+					
+					if(splitCheck(checkme)){
+						checkme=checkme+temp[i+1];
+						totals[i] = evalMulDiv(checkme);
+						
+						finalString = finalString + "-" + totals[i];
+						i++;
+					}
+					//splitCheck(checkme);
+					
+					else{
 
 					totals[i] = evalMulDiv(checkme);
 				
 					finalString = finalString + "-" + totals[i];
-			}
+			}}
 			
 				if (expr.charAt(0) == '-') {
 				finalString = finalString + "-1";
@@ -124,6 +158,9 @@ public class Calculator {
 				position = mul.nextToken();
 
 				if (position.equals("*")) {
+					if(!mul.hasMoreTokens()){
+						
+					}
 					multiply = Double.parseDouble(mul.nextToken()) * multiply;
 
 				} else if (position.equals("/")) {
@@ -142,6 +179,24 @@ public class Calculator {
 
 		return finalString;
 	}
+private boolean splitCheck(String checkme) {
+	
+	boolean wrongFormat = false;
+		char opCheck;
+		opCheck=checkme.charAt(checkme.length()-1);
+		
+		if(opCheck=='*'||opCheck=='/'){
+			wrongFormat = true;
+			System.out.println("wrong"+checkme);
+		}
+		
+			
+			return wrongFormat;
+		
+	}
+	
+
+
 //minusCheck checks if a minus sign is present in the expression
 	private boolean minusCheck(String expr) {
 		
@@ -175,10 +230,10 @@ public class Calculator {
 	//evalAddSub processes the expression using a string tokenizer and preforms the basic addition or subtaction
 	public double evalAddSub(String expr) {
 		double result = 0;
-
+		
 		double digit;
 		String number = null;
-		
+		String nextTok;
 		StringTokenizer addSub = new StringTokenizer(expr, "+-", true);
 
 
@@ -187,10 +242,14 @@ public class Calculator {
 			number = addSub.nextToken();
 
 			if (number.equals("+")) {
-
-				result = Double.parseDouble(addSub.nextToken()) + result;
-
-			}
+					nextTok=addSub.nextToken();
+					if(nextTok.equals("-")){
+					result = Double.parseDouble(addSub.nextToken()) + (-result);
+					}
+					else{
+					result = Double.parseDouble(nextTok) + result;
+				
+			}}
 
 			else if (number.equals("-")) {
 
@@ -203,9 +262,17 @@ public class Calculator {
 				result = result + digit;
 			}
 		}
-
+		
+		
+//		if(expr.charAt(0)=='-'||){
+//			result=-1*result;
+//			System.out.println(result);
+//			return result; 
+//		}
+//		else{
+		
 		return result;
-
+//		}
 	}
 
 }

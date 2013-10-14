@@ -75,9 +75,9 @@ public class TestCalculator {
 	public void testEvaluateDivide() {
 
 		Calculator calc = new Calculator();
-		double result = calc.evaluate("9/3*4/2");
+		double result = calc.evaluate("6/6");
 
-		assertTrue(result == 6.0);
+		assertTrue(result == 1.0);
 
 	}
 	@Test
@@ -87,6 +87,44 @@ public class TestCalculator {
 		double result = calc.evaluate("-5*2-2*3+4/2+1-1+7-3");
 
 		assertTrue(result ==-10.0);
+
+	}
+	
+	@Test
+	public void testEvaluateNegativeAddition() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("-2-2-3-5");
+
+		assertTrue(result == -12.0);
+
+	}
+	@Test
+	public void testEvaluateNegativeAdditionAndMultiplication() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("-2-2*6");
+
+		assertTrue(result == -14.0);
+
+	}
+	
+	@Test
+	public void testEvaluateNegativeMultiplication() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("-5*3");
+
+		assertTrue(result ==-15.0);
+
+	}
+	@Test
+	public void testEvaluateNegativeMultiplicationTreeTimes() {
+
+		Calculator calc = new Calculator();
+		double result = calc.evaluate("-5*-3*-4");
+
+		assertTrue(result ==-60.0);
 
 	}
 
