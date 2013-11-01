@@ -7,8 +7,9 @@ public class ViewTransCommand implements Command{
 	EmployeeAbility ability;
 	Transaction t;
 	
-	public ViewTransCommand(Transaction t){
+	public ViewTransCommand(EmployeeAbility ability, Transaction t){
 		this.t=t;
+		this.ability=ability;
 	}
 
 	@Override

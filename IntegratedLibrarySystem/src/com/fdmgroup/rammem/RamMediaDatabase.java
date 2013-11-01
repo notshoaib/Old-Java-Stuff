@@ -1,6 +1,8 @@
 package com.fdmgroup.rammem;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import com.fdmgroup.IBS.Book;
 import com.fdmgroup.IBS.NoLoadedDataException;
@@ -11,7 +13,7 @@ public class RamMediaDatabase implements DatabaseInterface<Book> {
 	Book value;
 	boolean loaded=false;
 	
-	HashMap<Integer, Book> userMap=new HashMap<Integer, Book>();
+	public static HashMap<Integer, Book> userMap=new HashMap<Integer, Book>();
 	
 	public RamMediaDatabase(){
 		
@@ -55,7 +57,15 @@ public class RamMediaDatabase implements DatabaseInterface<Book> {
 		
 	}
 	
+	static public void displayAll() {
+		Iterator it = userMap.entrySet().iterator();
 
+		while (it.hasNext()) {
+			Map.Entry pairs = (Map.Entry) it.next();
+			System.out.println(pairs.getKey() + " "
+					+ userMap.get(pairs.getKey()).getBookname());
+		}
+	}
 
 
 }

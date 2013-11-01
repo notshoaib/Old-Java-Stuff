@@ -10,8 +10,6 @@ import com.fdmgroup.IBS.users.User;
 
 public class RamUserDatabase implements DatabaseInterface<User> {
 
-
-
 	public static HashMap<Integer, User> userMap = new HashMap<Integer, User>();
 
 	public RamUserDatabase() {
@@ -24,11 +22,9 @@ public class RamUserDatabase implements DatabaseInterface<User> {
 
 	@Override
 	public void create(User user) throws NoLoadedDataException {
-			userMap.put(user.getUserID(), user);
-		
+		userMap.put(user.getUserID(), user);
 
-		}
-	
+	}
 
 	@Override
 	public User retrieve(int key) {
@@ -53,8 +49,6 @@ public class RamUserDatabase implements DatabaseInterface<User> {
 
 	}
 
-
-
 	public void displayAll() {
 		Iterator it = userMap.entrySet().iterator();
 
@@ -64,7 +58,5 @@ public class RamUserDatabase implements DatabaseInterface<User> {
 					+ userMap.get(pairs.getKey()).getName());
 		}
 	}
-
-
 
 }

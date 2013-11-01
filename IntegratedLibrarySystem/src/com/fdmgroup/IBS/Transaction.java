@@ -9,7 +9,7 @@ public class Transaction {
 	Patron patron;
 	static int tID=1000;
 	int transID;
-	boolean openTransaction=false;
+	boolean currentLoan=false;
 	
 	public Transaction(Book book, Patron patron){
 		this.book=book;
@@ -31,12 +31,12 @@ public class Transaction {
 		this.transID = transID;
 	}
 
-	public boolean isOpenTransaction() {
-		return openTransaction;
+	public boolean iscurrentLoan() {
+		return currentLoan;
 	}
 
-	public void setOpenTransaction(boolean openTransaction) {
-		this.openTransaction = openTransaction;
+	public void setcurrentLoan(boolean currentLoan) {
+		this.currentLoan = currentLoan;
 	}
 	
 	public Book getBook() {
@@ -53,6 +53,13 @@ public class Transaction {
 
 	public void setPatron(Patron p) {
 		this.patron = p;
+	}
+	
+	public String toString(){
+		String t="Transaction #"+this.getTransID()+ "Book Name: " +this.getBook().getBookname() 
+				+ "Patron Name: " +this.getPatron().getName() 
+				+ "Patron ID: ";
+		return t;
 	}
 	
 }
