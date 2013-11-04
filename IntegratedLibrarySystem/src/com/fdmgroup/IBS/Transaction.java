@@ -5,22 +5,21 @@ import com.fdmgroup.IBS.users.Patron;
 public class Transaction {
 	Book book;
 
-
 	Patron patron;
-	static int tID=1000;
+	static int tID = 1000;
 	int transID;
-	boolean currentLoan=false;
-	
-	public Transaction(Book book, Patron patron){
-		this.book=book;
-		this.patron=patron;
+	boolean currentLoan = false;
+
+	public Transaction(Book book, Patron patron) {
+		this.book = book;
+		this.patron = patron;
 		settransID();
 	}
-	
+
 	public void settransID() {
-		this.transID=tID;
-		tID+=7;
-	
+		this.transID = tID;
+		tID += 7;
+
 	}
 
 	public int getTransID() {
@@ -38,7 +37,7 @@ public class Transaction {
 	public void setcurrentLoan(boolean currentLoan) {
 		this.currentLoan = currentLoan;
 	}
-	
+
 	public Book getBook() {
 		return book;
 	}
@@ -54,12 +53,12 @@ public class Transaction {
 	public void setPatron(Patron p) {
 		this.patron = p;
 	}
-	
-	public String toString(){
-		String t="Transaction #"+this.getTransID()+ "Book Name: " +this.getBook().getBookname() 
-				+ "Patron Name: " +this.getPatron().getName() 
-				+ "Patron ID: ";
+
+	public String toString() {
+		String t = "Transaction #" + this.getTransID() + "Book Name: "
+				+ this.getBook().getBookname() + "Patron Name: "
+				+ this.getPatron().getName() + "Patron ID: ";
 		return t;
 	}
-	
+
 }

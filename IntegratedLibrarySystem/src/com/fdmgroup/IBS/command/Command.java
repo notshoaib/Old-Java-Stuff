@@ -1,7 +1,7 @@
 package com.fdmgroup.IBS.command;
 
-public interface Command {
+public interface Command<E> {
 	
-	public void execute();
+	public E execute() throws Exception;
 
 }

@@ -22,7 +22,7 @@ public class RamTransactionDatabase implements DatabaseInterface<Transaction> {
 
 	@Override
 	public void create(Transaction value) throws NoLoadedDataException {
-		if (loaded) {
+		if (value!=null) {
 			transList.add(value);
 		} else {
 
@@ -38,22 +38,24 @@ public class RamTransactionDatabase implements DatabaseInterface<Transaction> {
 		return transList.get(key);
 	}
 	
-	public void retrieve(Patron p) {
+	public Transaction retrieve(Patron p) {
 		
 		for(int i=0;i<transList.size();i++){
 			if(transList.get(i).iscurrentLoan()&&transList.get(i).getPatron()==p){
-				System.out.println("Transaction #: " +transList.get(i).getTransID()+ "is open");
+				return transList.get(i);
 			}
 		}
+		return null;
 	}
 	
-	public void transHistory(Patron p) {
+	public Transaction transHistory(Patron p) {
 		
 		for(int i=0;i<transList.size();i++){
 			if(transList.get(i).getPatron()==p){
-				System.out.println("Transaction #: " +transList.get(i).getTransID()+ "is open");
+				return transList.get(i);
 			}
 		}
+		return null;
 	}
 
 	@Override

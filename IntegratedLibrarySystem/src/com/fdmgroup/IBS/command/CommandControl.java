@@ -9,7 +9,7 @@ public class CommandControl {
 		this.command=command;
 	}
 	
-	public void pressButton(){
+	public void pressButton() throws Exception{
 		command.execute();
 	}
 

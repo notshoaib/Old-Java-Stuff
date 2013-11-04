@@ -1,7 +1,9 @@
 package com.fdmgroup.IBS.command;
 
+import com.fdmgroup.DTO.PatronDTO;
 
-public class CreatePatronCommand implements Command {
+
+public class CreatePatronCommand implements Command<PatronDTO> {
 
 
 	EmployeeAbility ability;
@@ -13,9 +15,10 @@ public class CreatePatronCommand implements Command {
 	}
 
 	@Override
-	public void execute() 
+	public PatronDTO execute() 
 	{
-		ability.createPatron(name);
+		return (ability.createPatron(name));
+		
 	}
 
 }

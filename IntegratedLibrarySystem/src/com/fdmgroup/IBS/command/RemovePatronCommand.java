@@ -1,8 +1,9 @@
 package com.fdmgroup.IBS.command;
 
+import com.fdmgroup.DTO.PatronDTO;
 import com.fdmgroup.rammem.RamUserDatabase;
 
-public class RemovePatronCommand implements Command {
+public class RemovePatronCommand implements Command<PatronDTO> {
 
 
 	EmployeeAbility ability;
@@ -16,9 +17,9 @@ public class RemovePatronCommand implements Command {
 	}
 
 	@Override
-	public void execute() {
+	public PatronDTO execute() {
 
-		ability.removePatron(userID,ram);
+		return(ability.removePatron(userID,ram));
 	}
 
 }

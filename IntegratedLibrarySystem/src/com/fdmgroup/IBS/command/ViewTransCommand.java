@@ -1,8 +1,9 @@
 package com.fdmgroup.IBS.command;
 
+import com.fdmgroup.DTO.TransDTO;
 import com.fdmgroup.IBS.Transaction;
 
-public class ViewTransCommand implements Command{
+public class ViewTransCommand implements Command<TransDTO>{
 	
 	EmployeeAbility ability;
 	Transaction t;
@@ -13,8 +14,8 @@ public class ViewTransCommand implements Command{
 	}
 
 	@Override
-	public void execute() {
-		ability.viewTransaction(t);
+	public TransDTO execute() {
+		return(ability.viewTransaction(t));
 		
 	}
 	

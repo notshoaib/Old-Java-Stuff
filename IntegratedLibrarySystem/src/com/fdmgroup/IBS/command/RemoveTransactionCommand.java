@@ -1,9 +1,10 @@
 package com.fdmgroup.IBS.command;
 
+import com.fdmgroup.DTO.TransDTO;
 import com.fdmgroup.IBS.Transaction;
 import com.fdmgroup.rammem.RamTransactionDatabase;
 
-public class RemoveTransactionCommand implements Command {
+public class RemoveTransactionCommand implements Command<TransDTO> {
 
 	EmployeeAbility ability;
 	int key;
@@ -18,8 +19,8 @@ public class RemoveTransactionCommand implements Command {
 	
 	
 	@Override
-	public void execute() {
-		ability.RemoveTransaction(key,ram);
+	public TransDTO execute() {
+		return(ability.RemoveTransaction(key,ram));
 		
 	}
 

@@ -1,6 +1,8 @@
 package com.fdmgroup.IBS.command;
 
-public class ViewCatalogCommand implements Command {
+import com.fdmgroup.IBS.OPAC;
+
+public class ViewCatalogCommand implements Command<OPAC> {
 	
 	EmployeeAbility ability;
 	
@@ -9,8 +11,8 @@ public class ViewCatalogCommand implements Command {
 	}
 
 	@Override
-	public void execute() {
-		ability.viewCatalogCommand();
+	public OPAC execute() {
+		return(ability.viewCatalogCommand());
 
 		
 	}

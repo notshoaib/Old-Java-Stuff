@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.fdmgroup.IBS.NoSuchRecordException;
 import com.fdmgroup.IBS.patroncommand.PatronAbility;
 import com.fdmgroup.IBS.patroncommand.ViewTransHistoryCommand;
 import com.fdmgroup.IBS.users.Patron;
@@ -20,8 +21,18 @@ public class TestViewTransHistory {
 		PatronAbility ability=mock(PatronAbility.class);
 		
 		ViewTransHistoryCommand command= new ViewTransHistoryCommand(ram,ability,p);
-		command.execute();
-		verify(ability).viewTransactions(ram, p);
+		try {
+			command.execute();
+		} catch (NoSuchRecordException e1) {
+			
+			e1.printStackTrace();
+		}
+		try {
+			verify(ability).viewTransactions(ram, p);
+		} catch (NoSuchRecordException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 
