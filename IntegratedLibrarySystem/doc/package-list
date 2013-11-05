@@ -1,0 +1,16 @@
+com.fdmgroup.DTO
+com.fdmgroup.IBS
+com.fdmgroup.IBS.admincommand
+com.fdmgroup.IBS.command
+com.fdmgroup.IBS.factory
+com.fdmgroup.IBS.patroncommand
+com.fdmgroup.IBS.users
+com.fdmgroup.java
+com.fdmgroup.java2
+com.fdmgroup.rammem
+com.fdmgroup.testusers
+command.test
+command.test.ability
+command.test.admin
+command.test.patron
+command.user.test

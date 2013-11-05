@@ -2,16 +2,34 @@ package com.fdmgroup.DTO;
 
 import com.fdmgroup.IBS.users.Employee;
 
-public class EmployeeDTO {
+public class EmployeeDTO{
 	
 	EmployeeDTO eDTO;
 	
-	String name;
+	String firstName;
+	String lastName;
 	int userID;
 	
 		public EmployeeDTO(Employee e){
-			this.name=e.getName();
+			this.firstName=e.getfirstName();
+			this.lastName=e.getLastName();
 			this.userID=e.getUserID();
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
 		}
 
 		public EmployeeDTO geteDTO() {
@@ -22,13 +40,6 @@ public class EmployeeDTO {
 			this.eDTO = eDTO;
 		}
 
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
 
 		public int getUserID() {
 			return userID;

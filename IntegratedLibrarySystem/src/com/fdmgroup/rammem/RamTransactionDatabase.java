@@ -3,6 +3,7 @@ package com.fdmgroup.rammem;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.fdmgroup.IBS.Logging;
 import com.fdmgroup.IBS.NoLoadedDataException;
 import com.fdmgroup.IBS.NoSuchRecordException;
 import com.fdmgroup.IBS.Transaction;
@@ -25,7 +26,7 @@ public class RamTransactionDatabase implements DatabaseInterface<Transaction> {
 		if (value!=null) {
 			transList.add(value);
 		} else {
-
+			Logging.log.error("Data has not been loaded for creation");
 			throw new NoLoadedDataException(
 					"Data has not been loaded for creation");
 
@@ -66,7 +67,7 @@ public class RamTransactionDatabase implements DatabaseInterface<Transaction> {
 
 	@Override
 	public void delete(int key) {
-		// TODO Auto-generated method stub
+		transList.remove(key);
 
 	}
 	

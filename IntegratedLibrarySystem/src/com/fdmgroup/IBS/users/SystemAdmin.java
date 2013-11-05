@@ -3,10 +3,10 @@ package com.fdmgroup.IBS.users;
 import com.fdmgroup.IBS.command.CommandControl;
 
 public class SystemAdmin extends User {
-	CommandControl control;
+	CommandControl<Object> control;
 
-	public SystemAdmin(String Name) {
-		super(Name);
+	public SystemAdmin(String firstName, String lastName) {
+		super(firstName, lastName);
 		// TODO Auto-generated constructor stub
 	}
 

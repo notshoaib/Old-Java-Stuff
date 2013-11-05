@@ -54,11 +54,6 @@ public class Transaction {
 		this.patron = p;
 	}
 
-	public String toString() {
-		String t = "Transaction #" + this.getTransID() + "Book Name: "
-				+ this.getBook().getBookname() + "Patron Name: "
-				+ this.getPatron().getName() + "Patron ID: ";
-		return t;
-	}
+
 
 }

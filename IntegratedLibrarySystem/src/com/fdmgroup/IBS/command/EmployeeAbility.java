@@ -19,10 +19,10 @@ public class EmployeeAbility extends PatronAbility {
 
 	PatronDTO dto;
 	TransDTO tDTO;
+	
+	public PatronDTO createPatron(String firstname, String lastname) {
 
-	public PatronDTO createPatron(String name) {
-
-		User user = new Patron(name);
+		User user = new Patron(firstname, lastname);
 		DatabaseInterface<User> db = UserDatabaseFactory.getDatabase("ram"); // TODO:
 		// file
 		try {

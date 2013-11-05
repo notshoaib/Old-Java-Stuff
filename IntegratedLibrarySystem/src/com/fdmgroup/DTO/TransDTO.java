@@ -6,13 +6,14 @@ public class TransDTO {
 
 	int transID;
 	boolean currentLoan = false;
-	String patronName;
+	String firstName;
+	String lastName;
 
 	public TransDTO(Transaction t) {
 		this.transID = t.getTransID();
 		this.currentLoan = t.iscurrentLoan();
-		this.patronName = t.getPatron().getName();
-
+		this.firstName = t.getPatron().getfirstName();
+		this.lastName=t.getPatron().getLastName();
 	}
 
 	public int getTransID() {
@@ -31,11 +32,18 @@ public class TransDTO {
 		this.currentLoan = currentLoan;
 	}
 
-	public String getPatronName() {
-		return patronName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPatronName(String patronName) {
-		this.patronName = patronName;
+	public void setFirstName(String FirstName) {
+		this.firstName = FirstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 }

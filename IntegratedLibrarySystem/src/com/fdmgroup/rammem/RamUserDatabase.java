@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.fdmgroup.IBS.Logging;
 import com.fdmgroup.IBS.NoLoadedDataException;
 import com.fdmgroup.IBS.NoSuchRecordException;
 import com.fdmgroup.IBS.users.User;
@@ -37,6 +38,7 @@ public class RamUserDatabase implements DatabaseInterface<User> {
 		if (userMap.get(key) != null) {
 			userMap.put(key, user);
 		} else {
+			Logging.log.error("Data has not been loaded for creation");
 			throw new NoSuchRecordException("Data specified does not exist");
 		}
 
@@ -49,14 +51,6 @@ public class RamUserDatabase implements DatabaseInterface<User> {
 
 	}
 
-	public void displayAll() {
-		Iterator it = userMap.entrySet().iterator();
 
-		while (it.hasNext()) {
-			Map.Entry pairs = (Map.Entry) it.next();
-			System.out.println(pairs.getKey() + " "
-					+ userMap.get(pairs.getKey()).getName());
-		}
-	}
 
 }

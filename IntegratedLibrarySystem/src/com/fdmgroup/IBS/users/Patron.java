@@ -1,11 +1,13 @@
 package com.fdmgroup.IBS.users;
 
+import com.fdmgroup.DTO.PatronDTO;
+import com.fdmgroup.DTO.TransDTO;
 import com.fdmgroup.IBS.command.CommandControl;
 
 public class Patron extends User {
-	CommandControl control;
-	public Patron(String Name) {
-		super(Name);
+	CommandControl<TransDTO> control;
+	public Patron(String firstName, String lastName) {
+		super(firstName, lastName);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -13,12 +15,6 @@ public class Patron extends User {
 
 	}
 
-	public String toString() {
-		String patron = "User ID:" + this.getUserID() + " Name:"
-				+ this.getName();
-		return patron;
-
-	}
 	public void exportController(CommandControl c) {
 		control = c;
 	}

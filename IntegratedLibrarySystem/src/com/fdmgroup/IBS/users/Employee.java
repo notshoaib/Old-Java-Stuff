@@ -6,15 +6,15 @@ import com.fdmgroup.IBS.command.CommandControl;
 
 public class Employee extends User {
 
-	CommandControl control;
+	CommandControl<Object> control;
 
-	public Employee(String Name) {
-		super(Name);
+	public Employee(String firstName, String lastName) {
+		super(firstName, lastName);
 		// TODO Auto-generated constructor stub
 	}
 
-	public void performAction() throws Exception {
-		control.pressButton();
+	public Object performAction() throws Exception {
+		return control.pressButton();
 
 	}
 

@@ -6,17 +6,19 @@ import com.fdmgroup.IBS.command.Command;
 public class CreateEmployeeCommand implements Command<EmployeeDTO> {
 
 	AdminAbility ability;
-	String name;
+	String firstname;
+	String lastname;
 
-	protected CreateEmployeeCommand(AdminAbility ability, String name) {
-		this.name = name;
+	public CreateEmployeeCommand(AdminAbility ability, String firstname, String lastname) {
+		this.firstname = firstname;
 		this.ability = ability;
+		this.lastname=lastname;
 	}
 
 	@Override
 		public EmployeeDTO execute() 
 		{
-			return (ability.createEmployee(name);
+			return (ability.createEmployee(firstname,lastname));
 			
 		}
 }

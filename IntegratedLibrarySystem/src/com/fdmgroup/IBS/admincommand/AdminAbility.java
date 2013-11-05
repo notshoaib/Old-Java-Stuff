@@ -13,15 +13,14 @@ import com.fdmgroup.rammem.RamUserDatabase;
 
 public class AdminAbility extends EmployeeAbility {
 
-	
 	EmployeeDTO eDTO;
-	
-	public EmployeeDTO createEmployee(String name) {
+
+	public EmployeeDTO createEmployee(String firstName, String lastName) {
 		// User P=UserFactory.makeUser(name);
 		//
 		// RamUserDatabase.userMap.put(P.userID, P);
 
-		User user = new Employee(name);
+		User user = new Employee(firstName, lastName);
 		DatabaseInterface<User> db = UserDatabaseFactory.getDatabase("ram"); // TODO:
 																				// Change
 																				// this
@@ -38,12 +37,12 @@ public class AdminAbility extends EmployeeAbility {
 		return new EmployeeDTO((Employee) user);
 
 	}
-	
+
 	public EmployeeDTO removeEmployee(int userID, RamUserDatabase ram) {
 		eDTO.setUserID(userID);
 		ram.delete(userID);
 		return eDTO;
 
 	}
-	
+
 }
