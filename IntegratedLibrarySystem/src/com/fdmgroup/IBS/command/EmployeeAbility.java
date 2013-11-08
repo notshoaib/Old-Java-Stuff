@@ -1,5 +1,9 @@
 package com.fdmgroup.IBS.command;
 
+import SQLDatabase.TransactionTable;
+import SQLDatabase.UserTable;
+
+import com.fdmgroup.DTO.DTO;
 import com.fdmgroup.DTO.PatronDTO;
 import com.fdmgroup.DTO.TransDTO;
 import com.fdmgroup.IBS.Book;
@@ -19,8 +23,8 @@ public class EmployeeAbility extends PatronAbility {
 
 	PatronDTO dto;
 	TransDTO tDTO;
-	
-	public PatronDTO createPatron(String firstname, String lastname) {
+
+	public DTO createPatron(String firstname, String lastname) {
 
 		User user = new Patron(firstname, lastname);
 		DatabaseInterface<User> db = UserDatabaseFactory.getDatabase("ram"); // TODO:
@@ -32,7 +36,7 @@ public class EmployeeAbility extends PatronAbility {
 			e.printStackTrace();
 		}
 
-		PatronDTO pDTO = new PatronDTO((Patron) user);
+		DTO pDTO = new DTO((Patron) user);
 		return pDTO;
 
 	}
@@ -44,14 +48,15 @@ public class EmployeeAbility extends PatronAbility {
 
 	}
 
-	public TransDTO viewTransaction(Transaction t) {
-		TransDTO tDTO = new TransDTO(t);
-		return tDTO;
+	public DTO viewTransaction(Transaction t) {
+		TransactionTable table=new TransactionTable();
+		return table.retrieve(t.getTransID());
 	}
 
-	public PatronDTO viewPatronInfo(Patron p) {
-		PatronDTO pDTO = new PatronDTO(p);
-		return pDTO;
+	public DTO viewPatronInfo(Patron p) {
+		UserTable table=new UserTable();
+		return table.retrieve(p.getUserID());
+		
 
 	}
 
@@ -62,9 +67,9 @@ public class EmployeeAbility extends PatronAbility {
 
 	}
 
-	public TransDTO CreateTransaction(Book book, Patron p) {
+	public DTO CreateTransaction(int userID, String ISBN) {
 
-		Transaction t = new Transaction(book, p);
+		Transaction t = new Transaction(userID, ISBN);
 		DatabaseInterface<Transaction> db = TransactionDatabaseFactory
 				.getDatabase("ram"); // TODO:
 		// file
@@ -75,7 +80,7 @@ public class EmployeeAbility extends PatronAbility {
 			e.printStackTrace();
 		}
 
-		TransDTO tDTO = new TransDTO(t);
+		DTO tDTO = new DTO(t);
 		return tDTO;
 
 	}

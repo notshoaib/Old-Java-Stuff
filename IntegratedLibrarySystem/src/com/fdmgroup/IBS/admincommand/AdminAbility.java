@@ -1,5 +1,6 @@
 package com.fdmgroup.IBS.admincommand;
 
+import com.fdmgroup.DTO.DTO;
 import com.fdmgroup.DTO.EmployeeDTO;
 import com.fdmgroup.DTO.PatronDTO;
 import com.fdmgroup.IBS.NoLoadedDataException;
@@ -13,9 +14,9 @@ import com.fdmgroup.rammem.RamUserDatabase;
 
 public class AdminAbility extends EmployeeAbility {
 
-	EmployeeDTO eDTO;
+	DTO eDTO;
 
-	public EmployeeDTO createEmployee(String firstName, String lastName) {
+	public DTO createEmployee(String firstName, String lastName) {
 		// User P=UserFactory.makeUser(name);
 		//
 		// RamUserDatabase.userMap.put(P.userID, P);
@@ -34,11 +35,11 @@ public class AdminAbility extends EmployeeAbility {
 			e.printStackTrace();
 		}
 
-		return new EmployeeDTO((Employee) user);
+		return new DTO((Employee) user);
 
 	}
 
-	public EmployeeDTO removeEmployee(int userID, RamUserDatabase ram) {
+	public DTO removeEmployee(int userID, RamUserDatabase ram) {
 		eDTO.setUserID(userID);
 		ram.delete(userID);
 		return eDTO;

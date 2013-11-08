@@ -1,10 +1,11 @@
 package com.fdmgroup.IBS.admincommand;
 
+import com.fdmgroup.DTO.DTO;
 import com.fdmgroup.DTO.EmployeeDTO;
 import com.fdmgroup.IBS.command.Command;
 import com.fdmgroup.rammem.RamUserDatabase;
 
-public class RemoveEmployeeCommand implements Command<EmployeeDTO> {
+public class RemoveEmployeeCommand implements Command<DTO> {
 	AdminAbility ability;
 	int userID;
 	RamUserDatabase ram;
@@ -17,7 +18,7 @@ public class RemoveEmployeeCommand implements Command<EmployeeDTO> {
 	}
 
 	@Override
-	public EmployeeDTO execute() {
+	public DTO execute() {
 
 		return (ability.removeEmployee(userID, ram));
 	}

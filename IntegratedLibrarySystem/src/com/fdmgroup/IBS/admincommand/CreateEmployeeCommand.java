@@ -1,9 +1,10 @@
 package com.fdmgroup.IBS.admincommand;
 
+import com.fdmgroup.DTO.DTO;
 import com.fdmgroup.DTO.EmployeeDTO;
 import com.fdmgroup.IBS.command.Command;
 
-public class CreateEmployeeCommand implements Command<EmployeeDTO> {
+public class CreateEmployeeCommand implements Command<DTO> {
 
 	AdminAbility ability;
 	String firstname;
@@ -16,7 +17,7 @@ public class CreateEmployeeCommand implements Command<EmployeeDTO> {
 	}
 
 	@Override
-		public EmployeeDTO execute() 
+		public DTO execute() 
 		{
 			return (ability.createEmployee(firstname,lastname));
 			

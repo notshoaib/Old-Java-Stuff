@@ -1,9 +1,10 @@
 package com.fdmgroup.IBS.command;
 
+import com.fdmgroup.DTO.DTO;
 import com.fdmgroup.DTO.PatronDTO;
 import com.fdmgroup.IBS.users.Patron;
 
-public class ViewPatronInfoCommand implements Command<PatronDTO> {
+public class ViewPatronInfoCommand implements Command<DTO> {
 	
 		EmployeeAbility ability;
 		Patron p;
@@ -12,7 +13,7 @@ public class ViewPatronInfoCommand implements Command<PatronDTO> {
 		this.p=p;
 	}
 		@Override
-		public PatronDTO execute() {
+		public DTO execute() {
 			// TODO Auto-generated method stub
 			return(ability.viewPatronInfo(p));
 		}

@@ -14,6 +14,11 @@ public abstract class User {
 		this.lastName=lastName;
 		setuserID();
 	}
+	User(int userID,String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName=lastName;
+		this.userID=userID;
+	}
 
 	User() {
 		this.guest = true;
@@ -46,6 +51,11 @@ public abstract class User {
 	public void setuserID() {
 		this.userID = tID;
 		tID += 3;
+
+	}
+	public int setuserID(int userID) {
+		this.userID=userID;
+		return userID;
 
 	}
 

@@ -18,11 +18,11 @@ public class TestCreateTransactionCommand {
 	public void test() throws Exception {
 
 		EmployeeAbility ability = mock(EmployeeAbility.class);
-		Book b=mock(Book.class);
-		Patron p=mock(Patron.class);
-		CreateTransactionCommand command = new CreateTransactionCommand(ability,b,p);
+		Book b = mock(Book.class);
+		Patron p = mock(Patron.class);
+		CreateTransactionCommand command = new CreateTransactionCommand(
+				ability, p.getUserID(), b.getISBN());
 		command.execute();
-		verify(ability).CreateTransaction(b, p);		}
+		verify(ability).CreateTransaction(p.getUserID(), b.getISBN());
 	}
-
-
+}

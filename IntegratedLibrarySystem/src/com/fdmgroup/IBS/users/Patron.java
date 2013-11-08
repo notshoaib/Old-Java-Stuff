@@ -10,6 +10,11 @@ public class Patron extends User {
 		super(firstName, lastName);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Patron(int id, String firstName, String lastName) {
+		super(id, firstName, lastName);
+		// TODO Auto-generated constructor stub
+	}
 
 	public Patron() {
 

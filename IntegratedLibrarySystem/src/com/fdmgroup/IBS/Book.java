@@ -2,9 +2,9 @@ package com.fdmgroup.IBS;
 
 public class Book {
 	String bookname;
-	int ISBN;
+	String ISBN;
 	
-	public Book(int ISBN,String bookname){
+	public Book(String ISBN,String bookname){
 		this.bookname=bookname;
 		this.ISBN=ISBN;
 	}
@@ -17,12 +17,13 @@ public class Book {
 		this.bookname = bookname;
 	}
 
-	public int getISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public String setISBN(String ISBN) {
+		ISBN = ISBN;
+		return ISBN;
 	}
 
 }

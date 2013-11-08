@@ -9,11 +9,18 @@ public class Transaction {
 	static int tID = 1000;
 	int transID;
 	boolean currentLoan = false;
+	String ISBN;
+	int userID;
 
-	public Transaction(Book book, Patron patron) {
-		this.book = book;
-		this.patron = patron;
+	public Transaction(int userID, String ISBN) {
+		this.userID = userID;
+		this.ISBN=ISBN;
 		settransID();
+	}
+	public Transaction(int transID, int userID, String ISBN) {
+		this.transID = transID;
+		this.userID = userID;
+		this.ISBN=ISBN;
 	}
 
 	public void settransID() {
@@ -53,7 +60,19 @@ public class Transaction {
 	public void setPatron(Patron p) {
 		this.patron = p;
 	}
-
+	
+	public String getISBN() {
+		return ISBN;
+	}
+	public void setISBN(String iSBN) {
+		ISBN = iSBN;
+	}
+	public int getUserID() {
+		return userID;
+	}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
 
 
 }
