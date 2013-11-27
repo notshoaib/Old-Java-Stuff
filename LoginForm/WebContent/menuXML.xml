@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<MENU>
+                <MENUBAR>
+                                <TOPMENUBAR>HOMEPAGE</TOPMENUBAR>
+                </MENUBAR>
+                
+                <MENUBAR>
+                                <TOPMENUBAR>ABOUT</TOPMENUBAR>
+                </MENUBAR>
+
+                <MENUBAR>
+                                <TOPMENUBAR>CATALOG</TOPMENUBAR>
+                </MENUBAR>
+
+                <MENUBAR>
+                                <TOPMENUBAR>LINK</TOPMENUBAR>
+                </MENUBAR>
+
+                <MENUBAR>
+                                <TOPMENUBAR>SERVICE</TOPMENUBAR>
+                </MENUBAR>
+
+</MENU>

@@ -1,0 +1,89 @@
+#navigation
+{
+   font-size:1.25em;
+   width:150px;
+}
+#navigation ul
+{
+  margin:10px;
+  padding:0px;
+}
+#navigation li
+{
+  list-style-type:none;
+}
+
+#navigation ul#top-level
+{
+  background:#666;
+}
+#navigation ul#top-level li
+{
+     border-bottom: #fff solid;   
+     border-top:#fff solid;
+     border-width: 1px;
+}
+#navigation a
+{
+     color:#fff;                /*color is white*/
+     cursor:pointer;	 /*specify the type of pointer you want*/
+     display:block;       	 /*by choosing block the mouse will turn to a cursor when it is anywhere over that block, not just over the text*/
+     height:25px;
+     line-height:25px;
+     text-indent:10px;
+     text-decoration:none;	/*removes the underline from the link*/
+     width:150px; 		/*specifies the width of the block*/
+}
+#navigation a:hover
+{
+     text-decoration:underline;
+}
+#navigation li:hover
+{
+     background: #f90;
+}
+ul.sub-level
+{
+    display:none;
+}
+
+	li:hover .sub-level
+{
+    background:#999;
+    border: #fff solid;
+    border-width: 1px;
+    display:block;             /*like the other list, this too will be a block*/
+    position:absolute;      
+    left: 75px;
+    top:5px;
+    z-index:1;
+}
+
+	#navigation li:hover
+   	{
+     background: #f90;
+     position:relative;
+}
+
+#navigation .sub-level
+{
+    background: blue;
+}
+
+#navigation .sub-level .sub-level
+{
+    background: #D1E0E0;
+}
+li:hover .sub-level .sub-level
+{
+    display:none;
+}
+.sub-level li:hover .sub-level
+{
+    display:block;
+    z-index:1;
+}
+#navigation .sub-level .sub-level a
+{
+    width:180px; 
+}
