@@ -26,5 +26,9 @@ public class Cat {
 	public void groom(){
 		
 	}
+	
+	public void newMethod(){
+		
+	}
 
 }
