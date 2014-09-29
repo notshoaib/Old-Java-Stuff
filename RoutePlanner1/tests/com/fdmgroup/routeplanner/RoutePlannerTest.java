@@ -1,6 +1,9 @@
+package com.fdmgroup.routeplanner;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import com.fdmgroup.routeplanner.RoutePlanner;
 
 
 public class RoutePlannerTest {

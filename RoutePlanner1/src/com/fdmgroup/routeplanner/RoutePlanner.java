@@ -1,3 +1,4 @@
+package com.fdmgroup.routeplanner;
 
 public class RoutePlanner {
 
