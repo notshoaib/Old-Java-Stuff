@@ -5,7 +5,7 @@ package com.fdmgroup.abstractclassdemo;
  * @version 1.0
  */
 public abstract class Mammal extends Animal {
-
+	public static final int x=15;
 	public Mammal() {
 		
 	}

@@ -1,7 +1,7 @@
 package com.fdmgroup.abstractclassdemo;
 
 public class Dog extends Mammal implements Hunter, Bark {
-
+	public static final int x=5;
 	public Dog() {
 		
 	}

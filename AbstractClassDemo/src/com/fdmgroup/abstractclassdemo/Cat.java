@@ -1,6 +1,6 @@
 package com.fdmgroup.abstractclassdemo;
 
-public class Cat extends Mammal {
+public class Cat extends Mammal implements Bark{
 
 	public Cat() {
 		
@@ -30,6 +30,10 @@ public class Cat extends Mammal {
 	@Override
 	public void walk(){
 		System.out.println("Cat is walking like a human");
+	}
+	
+	public String markTerritory(){
+		return "cat meow";
 	}
 	
 	

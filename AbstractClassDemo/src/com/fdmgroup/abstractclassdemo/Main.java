@@ -30,7 +30,7 @@ public class Main {
 		} else
 			System.out.println("dog is not an instance of class Dog");
 		 
-		 
+		
 		 
 		 
 		 
