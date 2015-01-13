@@ -8,7 +8,7 @@ public class Child extends Parent {
 	}
 
 	public void makeTrade() {
-		System.out.println("Child is making a trade");
+		System.out.println("Child is making a million dollar trade");
 	}
 	
 	public void makeTrade(int amount){
