@@ -2,6 +2,7 @@ package com.fdmgroup.pojo;
 
 public class Person {
 	
+	private String personName;
 	
 	
 	public void sleep(){
