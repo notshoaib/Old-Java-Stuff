@@ -1,0 +1,2 @@
+driver=net.sourceforge.jtds.jdbc.Driver()
+url=jdbc:jtds:sqlserver://TRNNYC30353:61318; instance=SQLEXPRESS; DatabaseName=TradingPlatform;login=mohamad.salimi; pwd=JPA5onmm9
