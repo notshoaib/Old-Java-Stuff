@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.fdmgroup.tradingplatform.actions.LoginAction;
 import com.fdmgroup.tradingplatform.dao.AccountDAO;
 import com.fdmgroup.tradingplatform.pojo.Account;
+import com.fdmgroup.tradingplatform.pojo.Company;
 import com.fdmgroup.tradingplatform.pojo.Request;
 import com.fdmgroup.tradingplatform.pojo.Trade;
+import com.fdmgroup.tradingplatform.util.CompanyReader;
 import com.fdmgroup.tradingplatform.util.TradeReader;
 
 @Controller
@@ -45,6 +47,9 @@ public class HomeController {
 	@RequestMapping(value = "/CreateRequest", method = RequestMethod.GET)
 	public String CreateRequest(Model model) {
 		Request request = new Request();
+		CompanyReader compReader = new CompanyReader();
+		List<Company> companyList = compReader.readAllCompanies();
+		model.addAttribute("compList",companyList);
 		model.addAttribute(request);
 		return "traderequest";
 		}
