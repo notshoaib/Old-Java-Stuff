@@ -42,8 +42,9 @@
 		<div class="History">
 		   <div class="request">
 			<sf:form id="TRADE" method="POST" modelAttribute="request" >
-				<sf:select type="text" path="Company" placeholder="Company Name" required="required">
-					<sf:options items="companyList" itemValue="companyId" itemLabel="companyName" />
+				<sf:select type="text" path="company" required="required">
+					<sf:option value="-" label="--Please Select"/>
+					<sf:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
 				</sf:select>
 				<input type="number" name="Share" placeholder="# of Shares" required min="1">
 				<input type="number" name="MinShare" placeholder="Min # of Shares" required min="1">
