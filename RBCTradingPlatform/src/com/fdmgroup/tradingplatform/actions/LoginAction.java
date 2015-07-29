@@ -15,7 +15,7 @@ public class LoginAction {
 	
 	public boolean Login(){
 		Account storedAccount=accountDAO.read(account.getUsername());
-		if(storedAccount.equals(account)){
+		if(storedAccount.verifyLogin(account)){
 			return true;
 		}
 		else

@@ -33,7 +33,7 @@
 	<img id="Logo" src="resources/images/logo.jpg" />
 	<p class="CallUs">Call Us: 567-8309</p>
 	<button onclick="showLogin()" class="Button">login</button>
-	<form action="registerpage.html">
+	<form action="register">
 		<input type="submit" value="Register" class="Button">
 	</form>
 </div>

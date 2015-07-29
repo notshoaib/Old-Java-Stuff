@@ -4,12 +4,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fdmgroup.tradingplatform.actions.LoginAction;
 import com.fdmgroup.tradingplatform.dao.AccountDAO;
 import com.fdmgroup.tradingplatform.pojo.Account;
+import com.fdmgroup.tradingplatform.pojo.Request;
 
 @Controller
+@SessionAttributes("userAccount")
 public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -20,16 +23,47 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
-	public String Login(Account account) {
-		System.out.println(account.getUsername());
+	public String Login(Account account, Model model) {
+		
 		AccountDAO accountDAO = new AccountDAO();
 		LoginAction loginAction = new LoginAction(accountDAO,account);
 		if(loginAction.Login()){
+			model.addAttribute("userAccount", account);
+		
 		return "homepage";
 		}
 		else{
 		return "errorpage";
 		}
 	}
+	
+	@RequestMapping(value = "/CreateRequest", method = RequestMethod.GET)
+	public String CreateRequest(Model model) {
+		Request request = new Request();
+		model.addAttribute(request);
+		return "traderequest";
+		}
+	
+	@RequestMapping(value = "/CompleteRequest", method = RequestMethod.POST)
+	public String CompleteRequest(Model model) {
+		Request request = new Request();
+		model.addAttribute(request);
+		return "traderequest";
+		}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(Model model) {
+		Account account = new Account();
+		model.addAttribute(account);
+		return "registerpage";
+		}
+	
+	@RequestMapping(value = "/viewtrades", method = RequestMethod.GET)
+	public String viewTrades(Model model) {
+		Account account = new Account();
+		model.addAttribute(account);
+		return "viewtrades";
+		}
+
 
 }
