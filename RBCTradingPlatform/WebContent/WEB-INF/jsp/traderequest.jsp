@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
     
 <!DOCTYPE html>
@@ -41,28 +41,25 @@
 	<p>Request Trade:</p>
 		<div class="History">
 		   <div class="request">
-			<form id="TRADE" method="POST" >
-				<select type="text" name="Company" placeholder="Company Name" required>
-					<option>Company Name</option>
-					<option value="1">Google</option>
-					<option value="2">Apple</option>
-					<option value="3">Bank of America</option>
-					<option value="4">Facebook</option>
-					<option value="5">Samsung</option>
-				</select>
+			<sf:form id="TRADE" method="POST" modelAttribute="request" >
+				<sf:select type="text" path="Company" placeholder="Company Name" required="required">
+					<sf:options items="companyList" itemValue="companyId" itemLabel="companyName" />
+				</sf:select>
 				<input type="number" name="Share" placeholder="# of Shares" required min="1">
 				<input type="number" name="MinShare" placeholder="Min # of Shares" required min="1">
 				<input type="number" step="any" name="LimitPrice" placeholder="Limit Price" required min=".01">
 				Time in Force:
-				<input type="date" name="TimeInForce" required>
+				<input type="date" name="TimeInForce" required="required">
+				<sf:hidden path=""/>
+				<input type="hidden" name="companyID" required="required">
 				<select required name="role">
 		 			<option >Buy Or Sell...</option>
 		 			<option value="buy">Buy</option>
-					 <option value="sell">Sell</option>
+					<option value="sell">Sell</option>
 				</select>
 				<input type="hidden" id="RequestDate" name="RequestDate"  value="">
 				<input type="submit" class="Button" value="submit">
-			</form>
+			</sf:form>
 			</div>
 		</div>
 
