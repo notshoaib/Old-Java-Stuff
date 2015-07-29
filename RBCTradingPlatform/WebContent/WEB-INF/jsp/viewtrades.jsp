@@ -42,9 +42,9 @@
 	<p>Request Trade:</p>
 		<div class="History">
 		   <div class="request">
-			<c:forEach var="currentTrade" items='${requestScope.tradelist}'>
+			<c:forEach var="currentTrade" items='${tradelist}'>
 					<tr>
-						<td>${current_trade.transactionTime}</td>
+						<td>${currentTrade.shares}</td>
 						</tr>
 						</c:forEach>
 			</div>

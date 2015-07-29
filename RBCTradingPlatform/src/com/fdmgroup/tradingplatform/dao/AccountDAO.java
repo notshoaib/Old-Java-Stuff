@@ -114,20 +114,6 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 		return true;
 	}
 	
-	public Integer getShareholderId(){
-	String query = properties.getProperty("DeleteAccount");
-	    
-		try {
-			PreparedStatement statement = connection.prepareStatement());	
-			statement.setString(1, username);
-			statement.execute();
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-			return false;
-		}
-		
-		return true;
-	}
+
 
 }

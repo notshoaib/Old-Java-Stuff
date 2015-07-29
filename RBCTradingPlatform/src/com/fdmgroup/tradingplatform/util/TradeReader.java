@@ -32,12 +32,17 @@ public class TradeReader {
 		}
 	}
 	
-	public List<Trade> readAllTrades(Integer shareholderId){
+	public List<Trade> readAllTrades(String username){
+		
+		int shareholderId=getShareholderId(username);
 		List<Trade> tradeList= new ArrayList<Trade>();
 		String query = properties.getProperty("ReadTrades");
 		
+		
 		try {
 			PreparedStatement preparedStatment = connection.prepareStatement(query);
+			preparedStatment.setInt(1, shareholderId);
+			preparedStatment.setInt(2, shareholderId);
 			ResultSet rs=preparedStatment.executeQuery();
 			
 			while(rs.next()){
@@ -61,6 +66,25 @@ public class TradeReader {
 		
 		
 		return tradeList;
+		
+	}
+	
+	private Integer getShareholderId(String username){
+	
+	    
+		try {
+			PreparedStatement statement = connection.prepareStatement("Select shareholder_id from RequestPlatform..accounts where username=?");	
+			statement.setString(1, username);
+			ResultSet rs=statement.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		return null;
+		
 		
 	}
 }

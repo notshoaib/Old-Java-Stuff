@@ -71,7 +71,7 @@ public class HomeController {
 	@RequestMapping(value = "/viewtrades", method = RequestMethod.GET)
 	public String viewTrades(@ModelAttribute("userAccount") Account account,Model model) {
 		TradeReader tradeReader = new TradeReader();
-		List<Trade> tradeList=tradeReader.readAllTrades(account.getShareHolderId());
+		List<Trade> tradeList=tradeReader.readAllTrades(account.getUsername());
 		model.addAttribute("tradelist", tradeList);
 		
 		return "viewtrades";
