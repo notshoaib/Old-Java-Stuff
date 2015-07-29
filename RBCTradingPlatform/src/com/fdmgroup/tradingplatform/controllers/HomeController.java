@@ -1,7 +1,10 @@
 package com.fdmgroup.tradingplatform.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -10,6 +13,8 @@ import com.fdmgroup.tradingplatform.actions.LoginAction;
 import com.fdmgroup.tradingplatform.dao.AccountDAO;
 import com.fdmgroup.tradingplatform.pojo.Account;
 import com.fdmgroup.tradingplatform.pojo.Request;
+import com.fdmgroup.tradingplatform.pojo.Trade;
+import com.fdmgroup.tradingplatform.util.TradeReader;
 
 @Controller
 @SessionAttributes("userAccount")
@@ -27,7 +32,7 @@ public class HomeController {
 		
 		AccountDAO accountDAO = new AccountDAO();
 		LoginAction loginAction = new LoginAction(accountDAO,account);
-		if(loginAction.Login()){
+		if(loginAction.login()){
 			model.addAttribute("userAccount", account);
 		
 		return "homepage";
@@ -59,9 +64,11 @@ public class HomeController {
 		}
 	
 	@RequestMapping(value = "/viewtrades", method = RequestMethod.GET)
-	public String viewTrades(Model model) {
-		Account account = new Account();
-		model.addAttribute(account);
+	public String viewTrades(@ModelAttribute("userAccount") Account account,Model model) {
+		TradeReader tradeReader = new TradeReader();
+		List<Trade> tradeList=tradeReader.readAllTrades(account.getShareHolderId());
+		model.addAttribute("tradelist", tradeList);
+		
 		return "viewtrades";
 		}
 

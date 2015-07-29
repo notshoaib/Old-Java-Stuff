@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <!DOCTYPE html>
 <html>
@@ -41,28 +42,11 @@
 	<p>Request Trade:</p>
 		<div class="History">
 		   <div class="request">
-			<form id="TRADE" method="POST" >
-				<select type="text" name="Company" placeholder="Company Name" required>
-					<option>Company Name</option>
-					<option value="1">Google</option>
-					<option value="2">Apple</option>
-					<option value="3">Bank of America</option>
-					<option value="4">Facebook</option>
-					<option value="5">Samsung</option>
-				</select>
-				<input type="number" name="Share" placeholder="# of Shares" required min="1">
-				<input type="number" name="MinShare" placeholder="Min # of Shares" required min="1">
-				<input type="number" step="any" name="LimitPrice" placeholder="Limit Price" required min=".01">
-				Time in Force:
-				<input type="date" name="TimeInForce" required>
-				<select required name="role">
-		 			<option >Buy Or Sell...</option>
-		 			<option value="buy">Buy</option>
-					 <option value="sell">Sell</option>
-				</select>
-				<input type="hidden" id="RequestDate" name="RequestDate"  value="">
-				<input type="submit" class="Button" value="submit">
-			</form>
+			<c:forEach var="currentTrade" items='${requestScope.tradelist}'>
+					<tr>
+						<td>${current_trade.transactionTime}</td>
+						</tr>
+						</c:forEach>
 			</div>
 		</div>
 

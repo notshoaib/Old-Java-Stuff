@@ -4,12 +4,13 @@ import java.sql.Date;
 
 public class Trade {
 	
+
 	private int stock_ex_id;
 	private int stock_id;
 	private Date transactionTime;
 	private int shares;
-	private int share_price;
-	private int price_total;
+	private double share_price;
+	private double price_total;
 	private int buyer_id;
 	private int seller_id;
 	
@@ -37,16 +38,16 @@ public class Trade {
 	public void setShares(int shares) {
 		this.shares = shares;
 	}
-	public int getShare_price() {
+	public double getShare_price() {
 		return share_price;
 	}
-	public void setShare_price(int share_price) {
+	public void setShare_price(double share_price) {
 		this.share_price = share_price;
 	}
-	public int getPrice_total() {
+	public double getPrice_total() {
 		return price_total;
 	}
-	public void setPrice_total(int price_total) {
+	public void setPrice_total(double price_total) {
 		this.price_total = price_total;
 	}
 	public int getBuyer_id() {

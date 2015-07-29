@@ -13,7 +13,7 @@ public class LoginAction {
 		this.accountDAO=accountDAO;
 	}
 	
-	public boolean Login(){
+	public boolean login(){
 		Account storedAccount=accountDAO.read(account.getUsername());
 		if(storedAccount.verifyLogin(account)){
 			return true;
