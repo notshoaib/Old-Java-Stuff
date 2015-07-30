@@ -42,11 +42,20 @@
 	<p>Request Trade:</p>
 		<div class="History">
 		   <div class="request">
+		   	<th>TABLE 1</th>
+		   	<table>
+				<tr>
+					<td>Stock Exchange ID</td>
+					<td>Stock ID</td>
+				</tr>
 			<c:forEach var="currentTrade" items='${tradelist}'>
-					<tr>
-						<td>${currentTrade.shares}</td>
-						</tr>
-						</c:forEach>
+
+				<tr>
+					<td>${currentTrade.stock_ex_id}</td>
+					<td>${currentTrade.stock_id }</td>
+				</tr>
+			</c:forEach>
+				</table>
 			</div>
 		</div>
 

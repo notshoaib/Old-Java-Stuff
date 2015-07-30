@@ -34,7 +34,7 @@ public class CompanyReader {
        
        public List<Company> readAllCompanies(){
               List<Company> compList= new ArrayList<Company>();
-              String query = properties.getProperty("Readcomps");
+              String query = properties.getProperty("ReadComp");
               
               try {
                      PreparedStatement preparedStatment = connection.prepareStatement(query);

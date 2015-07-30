@@ -1,13 +1,14 @@
 package com.fdmgroup.tradingplatform.pojo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Trade {
 	
 
 	private int stock_ex_id;
 	private int stock_id;
-	private Date transactionTime;
+	private Timestamp transactionTime;
 	private int shares;
 	private double share_price;
 	private double price_total;
@@ -26,11 +27,11 @@ public class Trade {
 	public void setStock_id(int stock_id) {
 		this.stock_id = stock_id;
 	}
-	public Date getTransactionTime() {
+	public Timestamp getTransactionTime() {
 		return transactionTime;
 	}
-	public void setTransactionTime(Date transactionTime) {
-		this.transactionTime = transactionTime;
+	public void setTransactionTime(Timestamp timestamp) {
+		this.transactionTime = timestamp;
 	}
 	public int getShares() {
 		return shares;

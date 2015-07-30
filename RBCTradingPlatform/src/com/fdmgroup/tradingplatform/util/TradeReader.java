@@ -1,6 +1,7 @@
 package com.fdmgroup.tradingplatform.util;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +40,7 @@ public class TradeReader {
 		String query = properties.getProperty("ReadTrades");
 		
 		
+		
 		try {
 			PreparedStatement preparedStatment = connection.prepareStatement(query);
 			preparedStatment.setInt(1, shareholderId);
@@ -49,7 +51,7 @@ public class TradeReader {
 				Trade trade = new Trade();
 				trade.setStock_ex_id(rs.getInt(1));
 				trade.setStock_id(rs.getInt(2));
-				trade.setTransactionTime(rs.getDate(3));
+				trade.setTransactionTime(rs.getTimestamp(3));
 				trade.setShares(rs.getInt(4));
 				trade.setShare_price(rs.getDouble(5));
 				trade.setPrice_total(rs.getDouble(6));

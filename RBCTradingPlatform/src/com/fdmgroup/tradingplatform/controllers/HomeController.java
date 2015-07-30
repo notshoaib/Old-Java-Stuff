@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fdmgroup.tradingplatform.actions.LoginAction;
 import com.fdmgroup.tradingplatform.dao.AccountDAO;
+import com.fdmgroup.tradingplatform.enums.TimeInForce;
 import com.fdmgroup.tradingplatform.pojo.Account;
 import com.fdmgroup.tradingplatform.pojo.Company;
 import com.fdmgroup.tradingplatform.pojo.Request;
@@ -50,6 +51,7 @@ public class HomeController {
 		CompanyReader compReader = new CompanyReader();
 		List<Company> companyList = compReader.readAllCompanies();
 		model.addAttribute("compList",companyList);
+		model.addAttribute("timeInForce", TimeInForce.values());
 		model.addAttribute(request);
 		return "traderequest";
 		}
