@@ -47,12 +47,24 @@
 				<tr>
 					<td>Stock Exchange ID</td>
 					<td>Stock ID</td>
+					<td>Transaction Time</td>
+					<td>Shares</td>
+					<td>Share Price</td>
+					<td>Price Total</td>
+					<td>Buyer Id</td>
+					<td>Seller Id</td>					
 				</tr>
 			<c:forEach var="currentTrade" items='${tradelist}'>
 
 				<tr>
 					<td>${currentTrade.stock_ex_id}</td>
 					<td>${currentTrade.stock_id }</td>
+					<td>${currentTrade.transactionTime}</td>
+					<td>${currentTrade.shares}</td>
+					<td>${currentTrade.share_price}</td>
+					<td>${currentTrade.price_total}</td>
+					<td>${currentTrade.buyer_id}</td>
+					<td>${currentTrade.seller_id}</td>
 				</tr>
 			</c:forEach>
 				</table>

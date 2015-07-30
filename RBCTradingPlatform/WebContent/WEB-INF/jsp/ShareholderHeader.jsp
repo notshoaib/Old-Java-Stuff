@@ -8,7 +8,7 @@
     <div class="Banner"> 
 	<img id="Logo" src="resources/images/logo.jpg" />
 	    <p class="CallUs">Call Us: 567-8309</p>
-	    <form action="Logout" method="post">
+	    <form action="logout" method="post">
 		     <input type="submit" value="Logout" class="Button">
 		</form>       
     </div>

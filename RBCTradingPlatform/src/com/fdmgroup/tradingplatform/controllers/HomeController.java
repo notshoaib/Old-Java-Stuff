@@ -2,6 +2,8 @@ package com.fdmgroup.tradingplatform.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -78,6 +80,17 @@ public class HomeController {
 		
 		return "viewtrades";
 		}
+	
+	  @RequestMapping(value="/logout",method=RequestMethod.POST)
+	  public String logout(HttpSession session, Model model) {
+		  session.invalidate();
+		  model.asMap().clear();
+		  Account account = new Account();
+		  model.addAttribute(account);
+	    return "tradingplatformhome";
+	  }
+
+
 
 
 }

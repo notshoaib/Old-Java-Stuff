@@ -45,7 +45,7 @@ public class TradeReader {
 			PreparedStatement preparedStatment = connection.prepareStatement(query);
 			preparedStatment.setInt(1, shareholderId);
 			preparedStatment.setInt(2, shareholderId);
-			ResultSet rs=preparedStatment.executeQuery();
+			rs=preparedStatment.executeQuery();
 			
 			while(rs.next()){
 				Trade trade = new Trade();
