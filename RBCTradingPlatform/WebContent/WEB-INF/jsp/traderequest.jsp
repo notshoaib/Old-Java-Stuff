@@ -42,17 +42,23 @@
 		<div class="History">
 		   <div class="request">
 			<sf:form id="TRADE" method="POST" modelAttribute="request" >
+<<<<<<< .mine
+				<sf:select type="text" path="stock_id" placeholder="Company Name" required="required">
+					<sf:options items="${compList}" itemValue="stockId" itemLabel="compName" />
+=======
 				<sf:select type="text" path="company" required="required">
 					<sf:option value="-" label="--Please Select"/>
 					<sf:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
+>>>>>>> .r65
 				</sf:select>
-				<input type="number" name="Share" placeholder="# of Shares" required min="1">
-				<input type="number" name="MinShare" placeholder="Min # of Shares" required min="1">
-				<input type="number" step="any" name="LimitPrice" placeholder="Limit Price" required min=".01">
+				<sf:input type="number" path="shares" placeholder="# of Shares" required="required" min="1"/>
+				<sf:input type="number" path="minimum_shares" placeholder="Min # of Shares" required="spring" min="1"/>
+				<sf:input type="number" step="any" path="limit_price" placeholder="Limit Price" required="required" min=".01"/>
 				Time in Force:
-				<input type="date" name="TimeInForce" required="required">
-				<sf:hidden path=""/>
-				<input type="hidden" name="companyID" required="required">
+				<sf:select type="text" path="timeInForce" placeholder="Time In Force" required="required">
+					<sf:options items="${timeInForce}" itemValue="type" itemLabel="compName" />
+				</sf:select>
+				<sf:input type="string" path="TimeInForce" required="required"/>
 				<select required name="role">
 		 			<option >Buy Or Sell...</option>
 		 			<option value="buy">Buy</option>
