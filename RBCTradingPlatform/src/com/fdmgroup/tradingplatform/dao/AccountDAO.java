@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 import com.fdmgroup.jdbc.DBConnector;
@@ -71,7 +72,7 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 			System.out.println("problem");
 			e.printStackTrace();
 		}
-
+		shareholderId=getShareholderId(username);
 		return new Account(username, password, shareholderId);
 	}
 
@@ -112,6 +113,30 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public List<Account> readAll(String i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private Integer getShareholderId(String username){
+	
+	    
+		try {
+			PreparedStatement statement = connection.prepareStatement("Select shareholder_id from RequestPlatform..accounts where username=?");	
+			statement.setString(1, username);
+			ResultSet rs=statement.executeQuery();
+			rs.next();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		return null;
+		
 	}
 	
 

@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import com.fdmgroup.jdbc.DBConnector;
@@ -24,7 +26,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 	public RequestDAO(){
 		
 		try {
-			properties=SQLProperties.getProperties("H:/RBC workspace/RBC Trading Platform/dml.properties");
+			properties=SQLProperties.getProperties("H:\\RBC workspace\\RBCTradingPlatform\\dml.properties");
 			connection=DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 			
@@ -149,4 +151,51 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 		
 		return true;
 	}
-}
+
+	@Override
+	public List<Request> readAll(Integer shareholderId) {
+			List<Request> allRequests = new ArrayList<Request>();
+			String query = properties.getProperty("ReadOutstandingRequest");
+			Integer requestId=null;
+			java.util.Date requestDate=null;
+			RequestBuySellType requestType=null;
+			RequestStatus requestStatus=null;
+			Integer stockExId=null;
+			Integer stockId=null;
+			Integer shares=null;
+			Integer minimumShares=null;
+			TimeInForce timeInForce=null;
+			Double limitPrice=null;
+			Double stopPrice=null;
+			
+			try {
+				PreparedStatement statement = connection.prepareStatement(query);
+				statement.setInt(1, shareholderId);
+				rs = statement.executeQuery();
+				while (rs.next()) {
+					requestId=rs.getInt(1);
+					requestDate= rs.getTime(2);
+					requestType=RequestBuySellType.valueOf((rs.getString(3)));
+					requestStatus=RequestStatus.valueOf(rs.getString(4));
+					stockExId=rs.getInt(5);
+					stockId=rs.getInt(6);
+					shares=rs.getInt(7);
+					minimumShares=rs.getInt(8);
+					timeInForce=TimeInForce.getTimeInForce(rs.getString(9));
+					limitPrice=rs.getDouble(10);
+					stopPrice=rs.getDouble(11);
+					allRequests.add( new Request(requestId, shareholderId, new java.sql.Date(requestDate.getTime()), requestType, requestStatus
+							,stockExId, stockId,shares,minimumShares,timeInForce,limitPrice,stopPrice));
+
+				}
+
+			} catch (SQLException e) {
+				System.out.println("problem");
+				e.printStackTrace();
+			}
+
+			return allRequests;
+			
+		}
+	}
+
