@@ -42,28 +42,26 @@
 		<div class="History">
 		   <div class="request">
 			<sf:form id="TRADE" method="POST" modelAttribute="request" >
-<<<<<<< .mine
-				<sf:select type="text" path="stock_id" placeholder="Company Name" required="required">
+				<sf:select type="text" path="stock_id" required="required" mutltiple="false">
+					<option value="" label="--- Select Company ---" />
 					<sf:options items="${compList}" itemValue="stockId" itemLabel="compName" />
-=======
-				<sf:select type="text" path="company" required="required">
-					<sf:option value="-" label="--Please Select"/>
-					<sf:options items="${companyList}" itemValue="companyId" itemLabel="companyName" />
->>>>>>> .r65
 				</sf:select>
 				<sf:input type="number" path="shares" placeholder="# of Shares" required="required" min="1"/>
 				<sf:input type="number" path="minimum_shares" placeholder="Min # of Shares" required="spring" min="1"/>
 				<sf:input type="number" step="any" path="limit_price" placeholder="Limit Price" required="required" min=".01"/>
-				Time in Force:
-				<sf:select type="text" path="timeInForce" placeholder="Time In Force" required="required">
-					<sf:options items="${timeInForce}" itemValue="type" itemLabel="compName" />
-				</sf:select>
-				<sf:input type="string" path="TimeInForce" required="required"/>
-				<select required name="role">
-		 			<option >Buy Or Sell...</option>
-		 			<option value="buy">Buy</option>
-					<option value="sell">Sell</option>
-				</select>
+				<div>Time in Force:
+					<sf:select type="text" path="timeInForce" required="required" mutltiple="false">
+						<option label="--- Select Time in Force ---" />
+						<sf:options items="${timeInForce}" itemLabel="type"/>
+					</sf:select>
+				</div>
+				<div>
+					<select required name="role">
+			 			<option >Buy Or Sell...</option>
+			 			<option value="buy">Buy</option>
+						<option value="sell">Sell</option>
+					</select>
+				</div>
 				<input type="hidden" id="RequestDate" name="RequestDate"  value="">
 				<input type="submit" class="Button" value="submit">
 			</sf:form>

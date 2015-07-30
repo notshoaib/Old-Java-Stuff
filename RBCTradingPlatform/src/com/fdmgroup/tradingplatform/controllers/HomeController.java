@@ -1,5 +1,6 @@
 package com.fdmgroup.tradingplatform.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -55,7 +56,8 @@ public class HomeController {
 		CompanyReader compReader = new CompanyReader();
 		List<Company> companyList = compReader.readAllCompanies();
 		model.addAttribute("compList", companyList);
-		model.addAttribute("timeInForce", TimeInForce.values());
+		System.out.println(Arrays.toString(TimeInForce.values()));
+		model.addAttribute("timeInForce", Arrays.asList(TimeInForce.values()));
 		model.addAttribute(request);
 		return "traderequest";
 	}
