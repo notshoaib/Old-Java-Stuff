@@ -42,7 +42,7 @@
 		<div class="History">
 		   <div class="request">
 			<sf:form id="TRADE" method="POST" modelAttribute="request" >
-				<sf:select type="text" path="stock_id" required="required" mutltiple="false">
+				<sf:select path="stock_id" required="required" mutltiple="false">
 					<option value="" label="--- Select Company ---" />
 					<sf:options items="${compList}" itemValue="stockId" itemLabel="compName" />
 				</sf:select>
@@ -50,20 +50,20 @@
 				<sf:input type="number" path="minimum_shares" placeholder="Min # of Shares" required="spring" min="1"/>
 				<sf:input type="number" step="any" path="limit_price" placeholder="Limit Price" required="required" min=".01"/>
 				<div>Time in Force:
-					<sf:select type="text" path="timeInForce" required="required" mutltiple="false">
+					<sf:select path="timeInForce" required="required" mutltiple="false">
 						<option label="--- Select Time in Force ---" />
 						<sf:options items="${timeInForce}" itemLabel="type"/>
 					</sf:select>
 				</div>
 				<div>
-					<select required name="role">
-			 			<option >Buy Or Sell...</option>
-			 			<option value="buy">Buy</option>
-						<option value="sell">Sell</option>
-					</select>
+					<sf:select path="requestType "required="required" multiple="false">
+			 			<option label = "---Buy Or Sell---"/>
+			 			<sf:options items="${buySell}" itemLabel="type"/>
+					</sf:select>
 				</div>
-				<input type="hidden" id="RequestDate" name="RequestDate"  value="">
-				<input type="submit" class="Button" value="submit">
+				<sf:hidden path=""></sf:hidden>
+				<sf:input type="hidden" path="requestDate" value=getDate()/>
+				<input type="submit" class="Button" value="submit"/>
 			</sf:form>
 			</div>
 		</div>

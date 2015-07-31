@@ -49,14 +49,14 @@ public class TradeReader {
 			
 			while(rs.next()){
 				Trade trade = new Trade();
-				trade.setStock_ex_id(rs.getInt(1));
-				trade.setStock_id(rs.getInt(2));
+				trade.setStockId (rs.getInt(1));
+				trade.setStockExId(rs.getInt(2));
 				trade.setTransactionTime(rs.getTimestamp(3));
 				trade.setShares(rs.getInt(4));
-				trade.setShare_price(rs.getDouble(5));
-				trade.setPrice_total(rs.getDouble(6));
-				trade.setBuyer_id(rs.getInt(7));
-				trade.setSeller_id(rs.getInt(8));
+				trade.setSharePrice(rs.getDouble(5));
+				trade.setPriceTotal(rs.getDouble(6));
+				trade.setBuyerId(rs.getInt(7));
+				trade.setSellerId(rs.getInt(8));
 				
 				tradeList.add(trade);
 				

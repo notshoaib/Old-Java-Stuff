@@ -16,6 +16,7 @@ import com.fdmgroup.tradingplatform.actions.LoginAction;
 import com.fdmgroup.tradingplatform.actions.ViewRequests;
 import com.fdmgroup.tradingplatform.dao.AccountDAO;
 import com.fdmgroup.tradingplatform.dao.RequestDAO;
+import com.fdmgroup.tradingplatform.enums.RequestBuySellType;
 import com.fdmgroup.tradingplatform.enums.TimeInForce;
 import com.fdmgroup.tradingplatform.pojo.Account;
 import com.fdmgroup.tradingplatform.pojo.Company;
@@ -56,8 +57,8 @@ public class HomeController {
 		CompanyReader compReader = new CompanyReader();
 		List<Company> companyList = compReader.readAllCompanies();
 		model.addAttribute("compList", companyList);
-		System.out.println(Arrays.toString(TimeInForce.values()));
 		model.addAttribute("timeInForce", Arrays.asList(TimeInForce.values()));
+		model.addAttribute("buySell",Arrays.asList(RequestBuySellType.values()));
 		model.addAttribute(request);
 		return "traderequest";
 	}

@@ -12,4 +12,12 @@ public enum RequestBuySellType {
 	public String getStringValue() {
 		return this.type;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }

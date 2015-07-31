@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,7 +50,7 @@
 		</div>		      
 		
 		<div id="loginContainer">
-		<form id="login" action="Login" method="post">
+		<sf:form id="login" action="Login" method="post">
 			<fieldset>
 			    <p class="Title">LOGIN</p>
 				<input type="text" name="username" placeholder="Username" required>
@@ -57,7 +60,7 @@
 				<input type="submit" class="Button" value="login">
 				<button onclick="hideLogin()" class="Button">cancel</button>
 			</fieldset>
-		</form>
+		</sf:form>
         </div>
 		
 	</div>
