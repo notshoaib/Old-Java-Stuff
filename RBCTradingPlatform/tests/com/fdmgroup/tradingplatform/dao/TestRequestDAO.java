@@ -14,7 +14,7 @@ import com.fdmgroup.tradingplatform.pojo.Request;
 
 public class TestRequestDAO {
 
-	Request request;
+	Request request,request2;
 	ICrud<Request, Boolean, Integer> requestDAO;
 	
 	@Before
@@ -33,6 +33,21 @@ public class TestRequestDAO {
 		request.setTimeInForce(TimeInForce.DAY_ONLY);
 		
 		requestDAO.create(request);
+		
+		
+		request2 = new Request();
+		request2.setLimit_price(5.0);
+		request2.setMinimum_shares(100);
+		request2.setRequestDate(new java.sql.Date(new java.util.Date().getTime()));
+		request2.setRequestType(RequestBuySellType.SELL);
+		request2.setShareholder_id(10);
+		request2.setShares(599);
+		request2.setStatus(RequestStatus.ACTIVE);
+		request2.setStock_id(1);
+		request2.setStockExId(3);
+		request2.setTimeInForce(TimeInForce.DAY_ONLY);
+		
+		requestDAO.create(request2);
 	}
 
 	@Test
