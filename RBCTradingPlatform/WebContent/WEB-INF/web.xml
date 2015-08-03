@@ -9,7 +9,7 @@
   </welcome-file-list>
 
    <servlet>
-      <servlet-name>HelloWeb</servlet-name>
+      <servlet-name>RBC_Trading</servlet-name>
       <servlet-class>
          org.springframework.web.servlet.DispatcherServlet
       </servlet-class>
@@ -17,7 +17,7 @@
    </servlet>
 
    <servlet-mapping>
-      <servlet-name>HelloWeb</servlet-name>
+      <servlet-name>RBC_Trading</servlet-name>
       <url-pattern>/</url-pattern>
    </servlet-mapping>
  

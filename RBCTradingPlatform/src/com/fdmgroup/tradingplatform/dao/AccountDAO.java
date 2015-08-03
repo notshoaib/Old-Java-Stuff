@@ -16,10 +16,12 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 	private Connection connection;
 	private Properties properties;
 	private ResultSet rs;
+	private String path = getClass().getClassLoader().getResource("/").getPath();
+	
 	public AccountDAO(){
-		
+	System.out.println(path + "dml.properties");	
 		try {
-			properties=SQLProperties.getProperties("H:/RBC workspace/RBCTradingPlatform/dml.properties");
+			properties=SQLProperties.getProperties(path + "dml.properties");
 			connection=DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 			
