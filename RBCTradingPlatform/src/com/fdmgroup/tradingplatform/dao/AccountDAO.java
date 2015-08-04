@@ -16,7 +16,7 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 	private Connection connection;
 	private Properties properties;
 	private ResultSet rs;
-	private String path = getClass().getClassLoader().getResource("/").getPath();
+	private String path = getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
 	
 	public AccountDAO(){
 	System.out.println(path + "dml.properties");	

@@ -29,7 +29,7 @@ public class DBConnector {
 		else {
 			try {
 				Properties properties = new Properties();
-				File file = new File(new PropLoader().getDBProperties().getPath()+"dbproperties");
+				File file = new File(new PropLoader().getDBProperties().getPath().replace("%20", " ")+"dbproperties");
 				FileInputStream input = new FileInputStream(file);
 				properties.load(input);
 
