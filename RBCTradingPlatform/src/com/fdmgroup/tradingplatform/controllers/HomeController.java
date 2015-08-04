@@ -74,19 +74,24 @@ public class HomeController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
-		Account account = new Account();
-		model.addAttribute("account",account);
+		model.addAttribute("account", new Account());
 		return "registerpage";
 	}
 	
 	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
-		//accountDAO = new AccountDAO();
-		System.out.println(newUser.getUsername());
-		System.out.println(newUser.getPassword());
-		//accountDAO.create(newUser);
+		accountDAO = new AccountDAO();
+		if(newUser.getUsername()
+				.equals((accountDAO
+						.read(newUser
+								.getUsername()).getUsername()))){
+			model.addAttribute("account", new Account());
+			model.addAttribute("errorMessage","Username already used, please try again");
+			return "registerpage";
+		}
+		
+		accountDAO.create(newUser);
 		model.addAttribute("first",newUser.getUsername());
-		model.addAttribute("last", newUser.getPassword());
 		return "PostRegisterJSP";
 	}
 

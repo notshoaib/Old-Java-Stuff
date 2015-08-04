@@ -10,6 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/style/StyleSheet.css" rel="stylesheet"
 	type="text/css" />
+<link href="resources/style/TableStyleSheet.css" rel="stylesheet"
+	type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <title>Request Trade</title>

@@ -18,7 +18,7 @@ public class RequestMatcher {
 	public RequestMatcher() {
 		try {
 			properties = SQLProperties
-					.getProperties(path+"properties/dml.properties");
+					.getProperties(path+"dml.properties");
 			connection = DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 

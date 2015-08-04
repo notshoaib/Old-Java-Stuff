@@ -90,6 +90,12 @@ public class Account {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", password=" + password
+				+ ", shareHolderId=" + shareHolderId + "]";
+	}
 	
 	
 

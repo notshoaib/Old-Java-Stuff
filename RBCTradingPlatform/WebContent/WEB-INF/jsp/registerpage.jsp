@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,6 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Trading Platform Home</title>
 <link href="resources/style/StyleSheet.css" rel="stylesheet"
+	type="text/css" />
+<link href="resources/style/FormStyleSheet.css" rel="stylesheet"
 	type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans'
 	rel='stylesheet' type='text/css' />
@@ -50,10 +53,10 @@
 						method="POST" action="CompleteRegistration">
 						<tr>
 							<td>
-								<sf:label path="username" for="email">Email:</sf:label>
+								<sf:label path="username" for="username">User Name:</sf:label>
 							</td>
 							<td>
-								<sf:input path="username" name="username" id="email"/>
+								<sf:input path="username" name="username" id="username"/>
 								<sf:errors path="username" cssClass="formError" />
 							</td>
 						</tr>
@@ -65,9 +68,9 @@
 								<sf:input path="password" type="password" name="password" id="password" />
 								<sf:errors path="password" cssClass="formError" />
 							</td>
-							<td>
-								
-							</td>
+								<c:if test="${not empty errorMessage}">
+   									<c:out value="${errorMessage}"/>
+								</c:if>
 						</tr>
 						<tr>
 							<td colspan="2"><input type="submit" value="Register" /></td>

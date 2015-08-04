@@ -22,7 +22,7 @@ public class CompanyReader {
        public CompanyReader(){
               
               try {
-                     properties=SQLProperties.getProperties(path+"properties/dml.properties");
+                     properties=SQLProperties.getProperties(path+"dml.properties");
                      connection=DBConnector.getConnection();
               } catch (ClassNotFoundException e) {
                      
