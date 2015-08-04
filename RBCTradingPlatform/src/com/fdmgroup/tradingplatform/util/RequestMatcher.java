@@ -10,15 +10,15 @@ import com.fdmgroup.jdbc.SQLProperties;
 
 public class RequestMatcher {
 	
-	CallableStatement cs;
-	Properties properties;
-	Connection connection;
-	
+	private CallableStatement cs;
+	private Properties properties;
+	private Connection connection;
+	private String path = getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
 	
 	public RequestMatcher() {
 		try {
 			properties = SQLProperties
-					.getProperties("H:/RBC workspace/RBCTradingPlatform/dml.properties");
+					.getProperties(path+"properties/dml.properties");
 			connection = DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 

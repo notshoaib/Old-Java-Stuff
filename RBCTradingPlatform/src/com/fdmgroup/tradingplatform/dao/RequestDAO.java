@@ -22,11 +22,12 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 	private Connection connection;
 	private Properties properties;
 	private ResultSet rs;
+	private String path = getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
 	
 	public RequestDAO(){
 		
 		try {
-			properties=SQLProperties.getProperties("H:\\RBC workspace\\RBCTradingPlatform\\dml.properties");
+			properties=SQLProperties.getProperties(path + "dml.properties");
 			connection=DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 			

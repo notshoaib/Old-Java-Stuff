@@ -19,7 +19,7 @@ public class DBConnector {
 		class PropLoader {
 
 			public URL getDBProperties() throws URISyntaxException {
-				return getClass().getClassLoader().getResource("/");
+				return getClass().getResource("/");
 
 			}
 		}

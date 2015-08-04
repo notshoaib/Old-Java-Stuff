@@ -16,11 +16,12 @@
 //	private Connection connection;
 //	private Properties properties;
 //	private ResultSet rs;
+//	private String path = getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
 //	
 //	public TradeDAO(){
 //		
 //		try {
-//			properties=SQLProperties.getProperties("H:/RBC workspace/RBC Trading Platform/dml.properties");
+//			properties=SQLProperties.getProperties(path+"dml.properties");
 //			connection=DBConnector.getConnection();
 //		} catch (ClassNotFoundException e) {
 //			

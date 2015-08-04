@@ -28,6 +28,8 @@ import com.fdmgroup.tradingplatform.util.TradeReader;
 @Controller
 @SessionAttributes("userAccount")
 public class HomeController {
+	
+	private AccountDAO accountDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcomeHome(Model model) {
@@ -39,7 +41,7 @@ public class HomeController {
 	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public String Login(Account account, Model model) {
 
-		AccountDAO accountDAO = new AccountDAO();
+		accountDAO = new AccountDAO();
 		account=accountDAO.read(account.getUsername());
 		LoginAction loginAction = new LoginAction(accountDAO, account);
 		if (loginAction.login()) {
@@ -73,8 +75,17 @@ public class HomeController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
 		Account account = new Account();
-		model.addAttribute(account);
+		model.addAttribute("account",account);
 		return "registerpage";
+	}
+	
+	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
+	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
+		accountDAO = new AccountDAO();
+		System.out.println(newUser.getUsername());
+		System.out.println(newUser.getPassword());
+		//accountDAO.create(newUser);
+		return "PostRegisterJSP";
 	}
 
 	@RequestMapping(value = "/viewtrades", method = RequestMethod.GET)

@@ -17,11 +17,12 @@ public class CompanyReader {
        private Connection connection;
        private Properties properties;
        private ResultSet rs;
+       private String path;
        
        public CompanyReader(){
               
               try {
-                     properties=SQLProperties.getProperties("H:/RBC workspace/RBCTradingPlatform/dml.properties");
+                     properties=SQLProperties.getProperties(path+"properties/dml.properties");
                      connection=DBConnector.getConnection();
               } catch (ClassNotFoundException e) {
                      

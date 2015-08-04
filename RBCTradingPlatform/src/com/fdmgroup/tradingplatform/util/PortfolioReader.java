@@ -13,11 +13,12 @@ public class PortfolioReader {
 	private Connection connection;
 	private Properties properties;
 	private ResultSet rs;
+	private String path = getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
 
 	public PortfolioReader() {
 		try {
 			properties = SQLProperties
-					.getProperties("H:/RBC workspace/RBCTradingPlatform/dml.properties");
+					.getProperties(path+"properties/dml.properties");
 			connection = DBConnector.getConnection();
 		} catch (ClassNotFoundException e) {
 
