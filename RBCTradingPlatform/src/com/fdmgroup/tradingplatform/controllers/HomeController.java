@@ -31,7 +31,7 @@ public class HomeController {
 	
 	private AccountDAO accountDAO;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"", "/"},method = RequestMethod.GET)
 	public String welcomeHome(Model model) {
 		Account account = new Account();
 		model.addAttribute(account);
@@ -81,10 +81,12 @@ public class HomeController {
 	
 	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
-		accountDAO = new AccountDAO();
+		//accountDAO = new AccountDAO();
 		System.out.println(newUser.getUsername());
 		System.out.println(newUser.getPassword());
 		//accountDAO.create(newUser);
+		model.addAttribute("first",newUser.getUsername());
+		model.addAttribute("last", newUser.getPassword());
 		return "PostRegisterJSP";
 	}
 

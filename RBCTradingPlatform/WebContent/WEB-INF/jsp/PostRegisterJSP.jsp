@@ -12,7 +12,7 @@
 Thank you for Registering <br>
 your username is your ${requestScope.first}.${requestScope.last}
 
-              <form action="tradingplatformhome.html">
+              <form action="/">
 				<input type="submit" class="Button" value="Return">
 			</form>
 </body>

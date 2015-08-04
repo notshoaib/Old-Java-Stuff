@@ -28,7 +28,7 @@
 <div class="Banner">
 	<img id="Logo" src="resources/images/logo.jpg" />
 	<p class="CallUs">Call Us: 567-8309</p>
-	<button onclick="showLogin()" class="Button">login</button>
+	<button onclick="showLogin()" class="Button">Login</button>
 	<!-- 		<form action="registerpage.html"> -->
 	<!-- 		     <input type="submit" value="Register" class="Button"> -->
 	<!-- 		</form> -->
@@ -44,7 +44,7 @@
 
 		<div id="Opaque" class="Opacity">
 			<h2>Registration</h2>
-			<table border="20">
+			<table id="registration"border="20">
 				<tbody>
 					<sf:form id="registrationform" modelAttribute="account"
 						method="POST" action="CompleteRegistration">
@@ -53,7 +53,7 @@
 								<sf:label path="username" for="email">Email:</sf:label>
 							</td>
 							<td>
-								<sf:input path="username" name="username" id="email" />
+								<sf:input path="username" name="username" id="email"/>
 								<sf:errors path="username" cssClass="formError" />
 							</td>
 						</tr>
@@ -62,8 +62,11 @@
 								<sf:label path="password" for="password">Password:</sf:label>
 							</td>
 							<td>
-								<sf:input path="password" name="password" id="password" />
+								<sf:input path="password" type="password" name="password" id="password" />
 								<sf:errors path="password" cssClass="formError" />
+							</td>
+							<td>
+								
 							</td>
 						</tr>
 						<tr>
@@ -131,6 +134,9 @@
 		quis, bibendum a risus.
 		</p>
 	</div>
-
+<script type="text/javascript">
+$("#email").attr('required','');
+$("#password").attr('required','');
+</script>
 </body>
 </html>
