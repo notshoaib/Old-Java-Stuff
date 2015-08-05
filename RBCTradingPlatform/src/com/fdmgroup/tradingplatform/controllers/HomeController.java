@@ -33,8 +33,7 @@ public class HomeController {
 
 	@RequestMapping(value = {"", "/"},method = RequestMethod.GET)
 	public String welcomeHome(Model model) {
-		Account account = new Account();
-		model.addAttribute(account);
+		model.addAttribute(new Account());
 		return "tradingplatformhome";
 	}
 
@@ -46,8 +45,9 @@ public class HomeController {
 		LoginAction loginAction = new LoginAction(accountDAO, account);
 		if (loginAction.login()) {
 			model.addAttribute("userAccount", account);
+			model.addAttribute("userLogged", "true");
 
-			return "homepage";
+			return "tradingplatformhome";
 		} else {
 			return "errorpage";
 		}
@@ -75,7 +75,8 @@ public class HomeController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
 		model.addAttribute("account", new Account());
-		return "registerpage";
+		model.addAttribute("registered", "true");
+		return "tradingplatformhome";
 	}
 	
 	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
