@@ -57,7 +57,7 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 	public Account read(String username) {
 		String query = properties.getProperty("ReadAccount");
 		String password = null;
-		int shareholderId = 0;
+		Integer shareholderId = 0;
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, username);
@@ -129,8 +129,9 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 			PreparedStatement statement = connection.prepareStatement("Select shareholder_id from RequestPlatform..accounts where username=?");	
 			statement.setString(1, username);
 			ResultSet rs=statement.executeQuery();
-			rs.next();
+			if(rs.next()){
 			return rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

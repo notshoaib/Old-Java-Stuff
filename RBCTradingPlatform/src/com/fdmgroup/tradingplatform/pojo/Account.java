@@ -1,36 +1,42 @@
 package com.fdmgroup.tradingplatform.pojo;
 
 public class Account {
-	
+
 	private String username;
 	private String password;
-	private int shareHolderId;
-	
-	public Account(String username, String password, int shareholderId) {
-		this.password=password;
-		this.username=username;
-		this.shareHolderId=shareholderId;
+	private Integer shareHolderId;
+
+	public Account(String username, String password, Integer shareholderId) {
+		this.password = password;
+		this.username = username;
+		this.shareHolderId = shareholderId;
 	}
-	
-	public Account(){
-		
+
+	public Account() {
+
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getShareHolderId() {
+
+	public Integer getShareHolderId() {
 		return shareHolderId;
 	}
-	public void setShareHolderId(int shareHolderId) {
+
+	public void setShareHolderId(Integer shareHolderId) {
 		this.shareHolderId = shareHolderId;
 	}
 
@@ -45,8 +51,8 @@ public class Account {
 				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-	
-	public boolean verifyLogin(Object obj){
+
+	public boolean verifyLogin(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -96,7 +102,5 @@ public class Account {
 		return "Account [username=" + username + ", password=" + password
 				+ ", shareHolderId=" + shareHolderId + "]";
 	}
-	
-	
 
 }
