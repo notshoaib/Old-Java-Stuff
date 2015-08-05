@@ -57,7 +57,7 @@ public class ShareholderGenerator {
 			String query = properties.getProperty("CreateShareholder");
 
 			statement = connection.prepareStatement(query);
-			statement.setInt(1, id);
+			statement.setInt(1, id+1);
 			statement.execute();
 		} catch (SQLException e) {
 			
