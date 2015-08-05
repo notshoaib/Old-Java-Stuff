@@ -50,11 +50,12 @@ public class ShareholderGenerator {
 		PreparedStatement statement;
 		int id=0;
 		try {
-			statement = connection.prepareStatement("ReadMaxID");
+			String query = properties.getProperty("ReadMaxID");
+			statement = connection.prepareStatement(query);
 			ResultSet rs = statement.executeQuery();
 			rs.next();
 			id = rs.getInt(1);
-			String query = properties.getProperty("CreateShareholder");
+			query = properties.getProperty("CreateShareholder");
 
 			statement = connection.prepareStatement(query);
 			statement.setInt(1, id+1);
