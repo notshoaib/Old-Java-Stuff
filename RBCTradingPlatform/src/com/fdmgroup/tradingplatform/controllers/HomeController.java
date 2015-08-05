@@ -75,7 +75,7 @@ public class HomeController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model) {
 		model.addAttribute("account", new Account());
-		model.addAttribute("registered", "true");
+		model.addAttribute("register", "true");
 		return "tradingplatformhome";
 	}
 	
@@ -87,8 +87,9 @@ public class HomeController {
 						.read(newUser
 								.getUsername()).getUsername()))){
 			model.addAttribute("account", new Account());
+			model.addAttribute("register", "true");
 			model.addAttribute("errorMessage","Username already used, please try again");
-			return "registerpage";
+			return "tradingplatformhome";
 		}
 		
 		accountDAO.create(newUser);

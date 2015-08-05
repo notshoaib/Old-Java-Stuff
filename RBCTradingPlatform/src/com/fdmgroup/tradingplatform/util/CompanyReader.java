@@ -17,7 +17,7 @@ public class CompanyReader {
        private Connection connection;
        private Properties properties;
        private ResultSet rs;
-       private String path;
+       private String path =getClass().getClassLoader().getResource("/").getPath().replace("%20", " ");
        
        public CompanyReader(){
               
