@@ -58,12 +58,13 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 		String query = properties.getProperty("ReadAccount");
 		String password = null;
 		Integer shareholderId = 0;
+		String readUsername=null;
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setString(1, username);
 			rs = statement.executeQuery();
 			while (rs.next()) {
-				username=rs.getString(1);
+				readUsername=rs.getString(1);
 				password = rs.getString(2);
 				shareholderId = rs.getInt(3);
 
@@ -74,7 +75,7 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 			e.printStackTrace();
 		}
 		shareholderId=getShareholderId(username);
-		return new Account(username, password, shareholderId);
+		return new Account(readUsername, password, shareholderId);
 	}
 
 	@Override
