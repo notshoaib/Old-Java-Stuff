@@ -117,13 +117,13 @@ public class Request {
 	public void setTimeInForce(TimeInForce timeInForce) {
 		this.timeInForce = timeInForce;
 	}
-	public double getLimit_price() {
+	public Double getLimit_price() {
 		return limit_price;
 	}
 	public void setLimit_price(Double limit_price) {
 		this.limit_price = limit_price;
 	}
-	public double getStop_price() {
+	public Double getStop_price() {
 		return stop_price;
 	}
 	public void setStop_price(Double stop_price) {
