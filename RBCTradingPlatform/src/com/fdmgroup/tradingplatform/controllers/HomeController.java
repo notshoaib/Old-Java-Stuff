@@ -23,6 +23,7 @@ import com.fdmgroup.tradingplatform.pojo.Company;
 import com.fdmgroup.tradingplatform.pojo.Request;
 import com.fdmgroup.tradingplatform.pojo.Trade;
 import com.fdmgroup.tradingplatform.util.CompanyReader;
+import com.fdmgroup.tradingplatform.util.ShareholderGenerator;
 import com.fdmgroup.tradingplatform.util.TradeReader;
 
 @Controller
@@ -82,6 +83,7 @@ public class HomeController {
 	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
 		accountDAO = new AccountDAO();
+		int id = ShareholderGenerator.createShareholder();
 		if(newUser.getUsername()
 				.equals((accountDAO
 						.read(newUser
@@ -91,7 +93,7 @@ public class HomeController {
 			model.addAttribute("errorMessage","Username already used, please try again");
 			return "tradingplatformhome";
 		}
-		
+		newUser.setShareHolderId(id);
 		accountDAO.create(newUser);
 		model.addAttribute("first",newUser.getUsername());
 		return "PostRegisterJSP";

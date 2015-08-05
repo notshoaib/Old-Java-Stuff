@@ -20,8 +20,8 @@ public class Request {
 	private int shares;
 	private int minimum_shares;
 	private TimeInForce timeInForce;
-	private double limit_price;
-	private double stop_price;
+	private Double limit_price;
+	private Double stop_price;
 	
 	public Request(){
 		
@@ -30,7 +30,7 @@ public class Request {
 	public Request(int request_id, int shareholder_id, Date requestDate,
 			RequestBuySellType requestType, RequestStatus status,
 			int stockExId, int stock_id, int shares, int minimum_shares,
-			TimeInForce timeInForce, double limit_price, double stop_price) {
+			TimeInForce timeInForce, Double limit_price, Double stop_price) {
 		super();
 		this.request_id = request_id;
 		this.shareholder_id = shareholder_id;
@@ -120,13 +120,13 @@ public class Request {
 	public double getLimit_price() {
 		return limit_price;
 	}
-	public void setLimit_price(double limit_price) {
+	public void setLimit_price(Double limit_price) {
 		this.limit_price = limit_price;
 	}
 	public double getStop_price() {
 		return stop_price;
 	}
-	public void setStop_price(double stop_price) {
+	public void setStop_price(Double stop_price) {
 		this.stop_price = stop_price;
 	}
 	

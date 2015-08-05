@@ -41,7 +41,8 @@ public class DBConnector {
 
 				input.close();
 
-			}catch (URISyntaxException e) {
+			}
+				catch (URISyntaxException e) {
 				e.printStackTrace();
 			} 
 			catch (FileNotFoundException e) {
