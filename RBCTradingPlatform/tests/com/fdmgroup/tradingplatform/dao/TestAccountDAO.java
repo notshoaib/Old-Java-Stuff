@@ -39,9 +39,9 @@ public class TestAccountDAO {
 		
 	}
 	
-	@After
-	public void tearDown(){
-		accountDAO.delete("mosalimi");
-	}
+//	@After
+//	public void tearDown(){
+//		accountDAO.delete("mosalimi");
+//	}
 
 }

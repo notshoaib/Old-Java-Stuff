@@ -7,7 +7,7 @@
 <table id="registration">
 	<tbody>
 		<sf:form id="registrationform" modelAttribute="account"
-			method="POST" action="CompleteRegistration">
+			method="POST" action="completeRegistration">
 			<tr>
 				<td>
 					<sf:label path="username" for="username">User Name:</sf:label>
@@ -26,7 +26,7 @@
 					<sf:errors path="password" cssClass="formError" />
 				</td>
 					<c:if test="${not empty errorMessage}">
-									<c:out value="${errorMessage}"/>
+						<c:out value="${errorMessage}"/>			
 					</c:if>
 			</tr>
 			<tr>

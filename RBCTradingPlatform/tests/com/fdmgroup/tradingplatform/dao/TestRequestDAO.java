@@ -23,7 +23,7 @@ public class TestRequestDAO {
 		requestDAO = new RequestDAO();
 		request.setLimit_price(5.0);
 		request.setMinimum_shares(100);
-		request.setRequestDate(new java.sql.Date(new java.util.Date().getTime()));
+		request.setRequestDate(new java.sql.Timestamp(new java.util.Date().getTime()));
 		request.setRequestType(RequestBuySellType.BUY);
 		request.setShareholder_id(10);
 		request.setShares(599);
@@ -38,7 +38,7 @@ public class TestRequestDAO {
 		request2 = new Request();
 		request2.setLimit_price(null);
 		request2.setMinimum_shares(100);
-		request2.setRequestDate(new java.sql.Date(new java.util.Date().getTime()));
+		request2.setRequestDate(new java.sql.Timestamp(new java.util.Date().getTime()));
 		request2.setRequestType(RequestBuySellType.SELL);
 		request2.setShareholder_id(10);
 		request2.setShares(599);

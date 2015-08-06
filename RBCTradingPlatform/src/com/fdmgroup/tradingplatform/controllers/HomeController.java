@@ -1,5 +1,6 @@
 package com.fdmgroup.tradingplatform.controllers;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +25,7 @@ import com.fdmgroup.tradingplatform.pojo.Request;
 import com.fdmgroup.tradingplatform.pojo.Trade;
 import com.fdmgroup.tradingplatform.util.CompanyReader;
 import com.fdmgroup.tradingplatform.util.ShareholderGenerator;
+import com.fdmgroup.tradingplatform.util.StockExReader;
 import com.fdmgroup.tradingplatform.util.TradeReader;
 
 @Controller
@@ -43,6 +45,8 @@ public class HomeController {
 
 		accountDAO = new AccountDAO();
 		account=accountDAO.read(account.getUsername());
+	
+		
 		LoginAction loginAction = new LoginAction(accountDAO, account);
 		if (loginAction.login()) {
 			model.addAttribute("userAccount", account);
@@ -54,22 +58,29 @@ public class HomeController {
 		}
 	}
 
-	@RequestMapping(value = "/CreateRequest", method = RequestMethod.GET)
+	@RequestMapping(value = "/createRequest", method = RequestMethod.GET)
 	public String CreateRequest(Model model) {
-		Request request = new Request();
 		CompanyReader compReader = new CompanyReader();
 		List<Company> companyList = compReader.readAllCompanies();
 		model.addAttribute("compList", companyList);
 		model.addAttribute("timeInForce", Arrays.asList(TimeInForce.values()));
 		model.addAttribute("buySell",Arrays.asList(RequestBuySellType.values()));
-		model.addAttribute(request);
+		model.addAttribute(new Request());
 		return "traderequest";
 	}
 
-	@RequestMapping(value = "/CompleteRequest", method = RequestMethod.POST)
-	public String CompleteRequest(Model model) {
-		Request request = new Request();
-		model.addAttribute(request);
+	@RequestMapping(value = "/completeRequest", method = RequestMethod.POST)
+	public String CompleteRequest(@ModelAttribute("newRequest")Request newRequest,
+			@ModelAttribute("userAccount") Account account, Model model) {
+		RequestDAO requestDao = new RequestDAO();
+		StockExReader stexreader = new StockExReader();
+		
+		newRequest.setRequestDate(new java.sql.Timestamp(1000));
+		newRequest.setShareholder_id(account.getShareHolderId());
+		newRequest.setStockExId(stexreader.getStockExId(newRequest.getStock_id()));
+		requestDao.create(newRequest);
+		model.addAttribute(new Request());
+		model.addAttribute("success","success");
 		return "traderequest";
 	}
 
@@ -80,7 +91,7 @@ public class HomeController {
 		return "tradingplatformhome";
 	}
 	
-	@RequestMapping(value = "/CompleteRegistration", method = RequestMethod.POST)
+	@RequestMapping(value = "/completeRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
 		accountDAO = new AccountDAO();
 		int id = ShareholderGenerator.createShareholder();

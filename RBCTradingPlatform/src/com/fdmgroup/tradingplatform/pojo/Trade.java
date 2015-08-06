@@ -1,6 +1,5 @@
 package com.fdmgroup.tradingplatform.pojo;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Trade {

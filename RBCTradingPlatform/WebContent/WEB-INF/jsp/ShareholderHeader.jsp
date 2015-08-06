@@ -26,10 +26,10 @@
 			<form action="viewtrades" method="get">
 				<input type="submit" class="Button" value="View Trade History">
 			</form>
-			<form action="OutstandingRequest" method="get">
+			<form action="outstandingRequest" method="get">
 				<input type="submit" class="Button" value="View Outstanding Requests">
 			</form>
-			<form action="CreateRequest" method="get">
+			<form action="createRequest" method="get">
 				<input type="submit" class="Button" value="Request Trade">
 			</form>
 			<form action="portfolio" method="get">

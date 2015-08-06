@@ -1,8 +1,6 @@
 package com.fdmgroup.tradingplatform.dao;
 
-import java.net.Authenticator.RequestorType;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,15 +44,25 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
 			statement.setInt(1, request.getShareholder_id());
-			statement.setDate(2, request.getRequestDate());
+			statement.setTimestamp(2, request.getRequestDate());;
 			statement.setString(3, request.getRequestType().getStringValue());
 			statement.setInt(4,request.getStockExId());
 			statement.setInt(5,request.getStock_id());
 			statement.setInt(6, request.getShares());
 			statement.setInt(7, request.getMinimum_shares());
 			statement.setString(8, request.getTimeInForce().getStringValue());
-			statement.setDouble(9, request.getLimit_price());
-			statement.setDouble(10,request.getStop_price());
+			
+			if(request.getLimit_price()!=null){
+				statement.setDouble(9, request.getLimit_price());
+			}else{
+				statement.setNull(9, java.sql.Types.DOUBLE);
+			}
+			
+			if(request.getStop_price()!=null){
+				statement.setDouble(10,request.getStop_price());
+			}else{
+				statement.setNull(10, java.sql.Types.DOUBLE);
+			}
 			
 			statement.execute();
 		} catch (SQLException e) {
@@ -105,7 +113,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 			e.printStackTrace();
 		}
 
-		return new Request(requestId, shareholderId, new java.sql.Date(requestDate.getTime()), requestType, requestStatus
+		return new Request(requestId, shareholderId, new java.sql.Timestamp(requestDate.getTime()), requestType, requestStatus
 				,stockExId, stockId,shares,minimumShares,timeInForce,limitPrice,stopPrice);
 	}
 
@@ -115,15 +123,25 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 	    
 		try {
 			PreparedStatement statement = connection.prepareStatement(query);
-			statement.setDate(1, request.getRequestDate());
+			statement.setTimestamp(1, request.getRequestDate());
 			statement.setString(2, request.getRequestType().getStringValue());
 			statement.setInt(3,request.getStockExId());
 			statement.setInt(4,request.getStock_id());
 			statement.setInt(5, request.getShares());
 			statement.setInt(6, request.getMinimum_shares());
 			statement.setString(7, request.getTimeInForce().getStringValue());
-			statement.setDouble(8, request.getLimit_price());
-			statement.setDouble(9,request.getStop_price());
+			
+			if(request.getLimit_price()!=null){
+				statement.setDouble(8, request.getLimit_price());
+			}else{
+				statement.setNull(8, java.sql.Types.DOUBLE);
+			}
+			
+			if(request.getStop_price()!=null){
+				statement.setDouble(9,request.getStop_price());
+			}else{
+				statement.setNull(9, java.sql.Types.DOUBLE);
+			}					
 			statement.setInt(10,request.getRequest_id());
 			
 			statement.execute();
@@ -185,7 +203,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 					timeInForce=TimeInForce.getTimeInForce(rs.getString(9));
 					limitPrice=rs.getDouble(10);
 					stopPrice=rs.getDouble(11);
-					allRequests.add( new Request(requestId, shareholderId, new java.sql.Date(requestDate.getTime()), requestType, requestStatus
+					allRequests.add( new Request(requestId, shareholderId, new java.sql.Timestamp(requestDate.getTime()), requestType, requestStatus
 							,stockExId, stockId,shares,minimumShares,timeInForce,limitPrice,stopPrice));
 
 				}

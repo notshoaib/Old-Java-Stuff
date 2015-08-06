@@ -1,6 +1,6 @@
 package com.fdmgroup.tradingplatform.pojo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.fdmgroup.tradingplatform.enums.RequestBuySellType;
 import com.fdmgroup.tradingplatform.enums.RequestStatus;
@@ -12,7 +12,7 @@ public class Request {
 	private int parent_request_id;
 	private int share_filled;
 	private int shareholder_id;
-	private Date requestDate;
+	private Timestamp requestDate;
 	private RequestBuySellType requestType;
 	private RequestStatus status;
 	private int stockExId;
@@ -27,14 +27,14 @@ public class Request {
 		
 	}
 	
-	public Request(int request_id, int shareholder_id, Date requestDate,
+	public Request(int request_id, int shareholder_id, Timestamp requestDate,
 			RequestBuySellType requestType, RequestStatus status,
 			int stockExId, int stock_id, int shares, int minimum_shares,
 			TimeInForce timeInForce, Double limit_price, Double stop_price) {
 		super();
 		this.request_id = request_id;
 		this.shareholder_id = shareholder_id;
-		this.requestDate = requestDate;
+		this.setRequestDate(requestDate);
 		this.requestType = requestType;
 		this.status = status;
 		this.stockExId = stockExId;
@@ -75,12 +75,7 @@ public class Request {
 	public void setShareholder_id(int shareholder_id) {
 		this.shareholder_id = shareholder_id;
 	}
-	public Date getRequestDate() {
-		return requestDate;
-	}
-	public void setRequestDate(Date requestDate) {
-		this.requestDate = requestDate;
-	}
+	
 	public RequestBuySellType getRequestType() {
 		return requestType;
 	}
@@ -128,6 +123,14 @@ public class Request {
 	}
 	public void setStop_price(Double stop_price) {
 		this.stop_price = stop_price;
+	}
+
+	public Timestamp getRequestDate() {
+		return requestDate;
+	}
+
+	public void setRequestDate(Timestamp requestDate) {
+		this.requestDate = requestDate;
 	}
 	
 	
