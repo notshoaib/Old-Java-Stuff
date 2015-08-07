@@ -18,14 +18,6 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="resources/js/lity.min.js"></script>
-<%-- <script> --%>
-<!-- 	function showLogin() { -->
-<!-- 		document.getElementById("loginContainer").style.display = 'block'; -->
-<!-- 	} -->
-<!-- 	function hideLogin() { -->
-<!-- 		document.getElementById("loginContainer").style.display = 'none'; -->
-<!-- 	} -->
-<%-- </script> --%>
 <div class="Banner">
 	<img id="Logo" src="resources/images/logo.jpg" />
 	<p class="CallUs">Call Us: 567-8309</p>

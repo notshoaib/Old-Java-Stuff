@@ -1,9 +1,9 @@
 package com.fdmgroup.tradingplatform.controllers;
 
-import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -71,11 +71,14 @@ public class HomeController {
 
 	@RequestMapping(value = "/completeRequest", method = RequestMethod.POST)
 	public String CompleteRequest(@ModelAttribute("newRequest")Request newRequest,
-			@ModelAttribute("userAccount") Account account, Model model) {
+			@ModelAttribute("userAccount") Account account,
+			HttpServletRequest request, Model model) {
+		
 		RequestDAO requestDao = new RequestDAO();
 		StockExReader stexreader = new StockExReader();
+		Long date = (Long)request.getAttribute("dateLong");
 		
-		newRequest.setRequestDate(new java.sql.Timestamp(1000));
+		newRequest.setRequestDate(new java.sql.Timestamp(date));
 		newRequest.setShareholder_id(account.getShareHolderId());
 		newRequest.setStockExId(stexreader.getStockExId(newRequest.getStock_id()));
 		requestDao.create(newRequest);
@@ -130,7 +133,7 @@ public class HomeController {
 		return "tradingplatformhome";
 	}
 
-	@RequestMapping(value = "/OutstandingRequest", method = RequestMethod.GET)
+	@RequestMapping(value = "/outstandingRequest", method = RequestMethod.GET)
 	public String viewOutstandingRequest(@ModelAttribute("userAccount") Account account, Model model) {
 		ViewRequests viewRequests = new ViewRequests(new RequestDAO(),
 				account.getShareHolderId());

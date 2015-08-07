@@ -14,7 +14,6 @@
     </div>
     
 <div class="MainContainer">
-		<img class="CenterPicture" src="resources/images/main.jpg" />
 		
 		
 		<div id="Opaque" class="Opacity">

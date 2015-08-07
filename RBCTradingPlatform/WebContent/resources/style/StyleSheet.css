@@ -1,7 +1,14 @@
-body{
+body {
+text-align : center ;
+min-width : 770px ;
 }
-
-
+div.wrapper {
+width : 770px ;
+text-align : left ;
+margin-left : auto ;
+margin-right : auto ;
+position : relative ;
+}
 .Banner{
 position: absolute;
 top:1px;
@@ -48,11 +55,14 @@ color: #FFFFFF;
 font-family: 'Droid Sans', sans-serif;
 border-radius:6px;
 cursor: pointer;
-align:right;
+width: 20em;
+height: 2em;
 }
 
 div.MainContainer{ 
-position: fixed;
+position: absolute;
+background-image: url('../images/main.jpg');
+background-size:100% auto;
 left:1px;
 right:1px;
 top:10%;
@@ -61,6 +71,7 @@ margin-right:auto;
 width:95%;
 height:40%;
 box-shadow: 10px 20px 5px #555555;
+overflow:hidden;
 }
 
 .Opacity{
@@ -77,8 +88,8 @@ padding: 10px;
 }
 
 .CenterPicture{
-width: 100%; 
-height:100%;
+min-width: 100%; 
+max-height:100%;
 border-style:outset;
 border-color:#3399FF;
 }
@@ -168,11 +179,12 @@ height:40%;
 left:3%;
 border-style:inset;
 border-style:outset;
-border-color:#3399FF;
+border-color:#000000;
 background-color:#3399FF;
 padding:20px;
 font-size:1.5em;
 color:white;
+overflow:auto;
 }
 .History
 {
@@ -181,13 +193,13 @@ width:90%;
 height:80%;
 margin-left:auto;
 margin-right: auto;
-flow:auto;
+overflow:auto;
 color:black;
 font-size: .7em;
 }
 
 .request{
-postion:fixed;
+position:fixed;
 left:10%;
 right:10%;
 

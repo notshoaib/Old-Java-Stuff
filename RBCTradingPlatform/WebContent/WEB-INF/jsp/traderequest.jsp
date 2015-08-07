@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/style/StyleSheet.css" rel="stylesheet"
 	type="text/css" />
-<link href="resources/style/TableStyleSheet.css" rel='stylesheet'
+<link href="resources/style/Form.css" rel='stylesheet'
 	type='text/css' />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans'
 	rel='stylesheet' type='text/css' />
@@ -22,75 +22,76 @@
 	<%@ include file="ShareholderHeader.jsp"%>
 
 	<div class="ActivityContainer">
-		<p>Request Trade:</p>
-		<div class="History">
-			<div class="request">
 				<table class="table--class">
 					<sf:form id="TRADE" method="POST" modelAttribute="request" action="completeRequest">
-						<tr>
-							<td>Select Company</td>
-							<td>Select Number of Shares</td>
-							<td>Select Minimum Shares</td>
-							<td>Set Limit Price</td>
-							<td>Set Stop Price</td>
-							<td>Select Time In Force</td>
-							<td>Select Trade Type</td>
-						</tr>
-						<tr>
-							<td>
-								<sf:select path="stock_id" required="required" mutltiple="false">
-									<option label="--- Select Company ---" />
-									<sf:options items="${compList}" itemValue="stockId" itemLabel="compName"/>
-								</sf:select>
-							</td>
-							<td>
-								<sf:input type="number" path="shares" placeholder="# of Shares" required="required" min="1" />
-							</td>
-							<td>
-								<sf:input type="number" path="minimum_shares" placeholder="Min # of Shares" required="spring" min="1" />
-							</td>
-							<td>
-								<sf:input type="number" step="any" path="limit_price" placeholder="Limit Price"  min="0" />
-							</td>
-							<td>
-								<sf:input type="number" step="any" path="stop_price" placeholder="Stop Price"  min="0" />
-							</td>
-							<td>
-								<sf:select path="timeInForce" required="required" mutltiple="false">
-									<option label="--- Select Time in Force ---" />
-									<sf:options items="${timeInForce}" itemLabel="type" />
-								</sf:select>
-							</td>
-							<td>
-								<sf:select path="requestType" required="required" multiple="false">
-									<option label="---Buy Or Sell---" />
-									<sf:options items="${buySell}" itemLabel="type" />
-								</sf:select>
-							</td>
-						<tr>
-							<td>Request Date</td>
-						</tr>
-							<tr>
-								<td>
-									<input id ="visibleDate" type="datetime" readonly>
-<%-- 									<sf:hidden id="requestDate" path="requestDate" /> --%>
-								</td>
-							<tr>
-						</tr>
-						<tr>
-							<td><input type="submit" class="Button" value="submit" /></td>
-						</tr>
+						<fieldset>
+							<legend>Request</legend>
+							<div class="column">
+									<ul class="input-list style-1 clearfix">
+										<li>
+											<label for="requestDate">Request Date</label>
+											<input id ="visibleDate" type="text" readonly>
+											<input type="hidden" name="dateLong" id="requestDate" />
+										</li>
+										<li>
+											<label for="company">Select Company</label>
+											<sf:select path="stock_id" required="required" mutltiple="false">
+												<option label="--- Select Company ---" />
+												<sf:options items="${compList}" itemValue="stockId" itemLabel="compName"/>
+											</sf:select>
+										</li>
+									</ul>
+								</div>
+								<div class="column">
+									<ul class="input-list style-1 clearfix">
+										<li>
+											<label for="numberOfShares">Number of Shares</label>
+											<sf:input id="numberOfShares" type="text" path="shares" placeholder="# of Shares" required="required"/>
+										</li>
+										<li>
+											<label for="minShares">Minimum Shares</label>
+											<sf:input id="minShares" type="text" path="minimum_shares" placeholder="Min # of Shares" required="required" />
+										</li>
+										<li>
+											<label for="limitPrice">Set Limit Price</label>
+											<sf:input type="text" step="any" path="limit_price" placeholder="Limit Price"  min="0" />
+										</li>
+										<li>
+											<label for="stopPrice">Set Stop Price</label>
+											<sf:input type="text" step="any" path="stop_price" placeholder="Stop Price"  min="0" />
+										</li>
+									</ul>
+								</div>
+							<div class="column">
+								<ul class="input-list style-1 clearfix">
+									<li>
+										<label for="timeInForce">Select Time</label>
+										<sf:select path="timeInForce" required="required" mutltiple="false">
+											<option label="--- Select Time in Force ---" />
+											<sf:options items="${timeInForce}" itemLabel="type" />
+										</sf:select>
+									</li>
+								</ul>
+								<ul class="input-list style-1 clearfix">
+									<li>
+										<label for="tradeType">Select Trade Type</label>
+										<sf:select path="requestType" required="required" multiple="false">
+											<option label="---Buy Or Sell---" />
+											<sf:options items="${buySell}" itemLabel="type" />
+										</sf:select>
+									</li>
+								</ul>
+							</div>
+						</fieldset>	
+						<input type="submit" class="Button" value="submit" />
 						<c:if test="${not empty success}">
 							<h1>SUCCESS!!</h1>
 						</c:if>
 					</sf:form>
 				</table>
-			</div>
-		</div>
-
 	</div>
 	<script type="text/javascript">
-		var x = $("#requestDate").val(getDate());
+		var x = new Date().toTimeString();
 		$("#visibleDate").val(new Date().toTimeString());
 		$("#requestDate").val(new Date().getMilliseconds());
 	</script>
