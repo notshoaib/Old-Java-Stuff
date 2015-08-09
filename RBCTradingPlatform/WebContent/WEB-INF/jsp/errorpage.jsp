@@ -22,21 +22,19 @@
 		}
 
 	</script>
-	
-	
-	<div class="Banner"> 
-	<img id="Logo" src="resources/images/logo.jpg" />
-	    <p class="CallUs">Call Us: 567-8309</p>
-		<button onclick="showLogin()" class="Button">login</button>
-		<form action="registerpage.html">
-		     <input type="submit" value="Register" class="Button">
-		</form>
-		<p class="CallUs">Login Failed</p>
-	</div>
   </head>
   <body>
+<div class="Banner"> 
+<img id="Logo" src="resources/images/logo.jpg" />
+    <p class="CallUs">Call Us: 567-8309</p>
+	<button onclick="showLogin()" class="Button">login</button>
+	<form action="registerpage.html">
+	     <input type="submit" value="Register" class="Button">
+	</form>
+	<p class="CallUs">Login Failed</p>
+</div>
     <!-- Page Contents -->
-	
+<div class="wrapper">	
 	<div class="MainContainer">
 		<img class="CenterPicture" src="resources/images/main.jpg" />
 		
@@ -65,36 +63,40 @@
 	
 	<div id="OnlineTrading">
 		<a href="onlinetrading.html"><img class="CircleImage" src="resources/images/round-images1.png"></a>
+		<p class="Title"> Online Trading</p>
 		<p>
-			<p class="Title"> Online Trading</p>
+			
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec vestibulum urna. Mauris condimentum consectetur magna, ut molestie lorem elementum eget. 
 			Praesent lectus dui, dictum consequat molestie quis, bibendum a risus. 
 		</p>
 	</div>
 	<div id="InvestmentProducts">
 		<a href="investmentproducts.html"><img class="CircleImage" src="resources/images/round-images2.png"></a>
+		<p class="Title">Investment Products</p>
 		<p>
-			<p class="Title">Investment Products</p>
+			
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec vestibulum urna. Mauris condimentum consectetur magna, ut molestie lorem elementum eget. 
 			Praesent lectus dui, dictum consequat molestie quis, bibendum a risus. 
 		</p>
 	</div>
 	<div id="OnlineBrokerage">
 		<a href="onlinebrokerage.html"><img class="CircleImage" src="resources/images/round-images3.png"></a>
+		<p class="Title">Online Brokrage</p>
 		<p>
-			<p class="Title">Online Brokrage</p>
+			
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec vestibulum urna. Mauris condimentum consectetur magna, ut molestie lorem elementum eget. 
 			Praesent lectus dui, dictum consequat molestie quis, bibendum a risus. 
 		</p>
 	</div>
 	<div id="TPServices">
 		<a href="tpservices.html"><img class="CircleImage" src="resources/images/round-images4.png"></a>
+		<p class="Title">TP Services</p>
 		<p>
-			<p class="Title">TP Services</p>
+			
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec vestibulum urna. Mauris condimentum consectetur magna, ut molestie lorem elementum eget. 
 			Praesent lectus dui, dictum consequat molestie quis, bibendum a risus.
 		</p>
 	</div>
-    
+</div>
   </body>
 </html>

@@ -45,7 +45,6 @@ public class HomeController {
 
 		accountDAO = new AccountDAO();
 		account=accountDAO.read(account.getUsername());
-	
 		
 		LoginAction loginAction = new LoginAction(accountDAO, account);
 		if (loginAction.login()) {
@@ -87,12 +86,12 @@ public class HomeController {
 		return "traderequest";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(Model model) {
-		model.addAttribute("account", new Account());
-		model.addAttribute("register", "true");
-		return "tradingplatformhome";
-	}
+//	@RequestMapping(value = "/register", method = RequestMethod.GET)
+//	public String register(Model model) {
+//		model.addAttribute("account", new Account());
+//		model.addAttribute("register", "true");
+//		return "tradingplatformhome";
+//	}
 	
 	@RequestMapping(value = "/completeRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){

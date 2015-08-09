@@ -18,19 +18,24 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="resources/js/lity.min.js"></script>
+</head>
+<body>
 <div class="Banner">
 	<img id="Logo" src="resources/images/logo.jpg" />
 	<p class="CallUs">Call Us: 567-8309</p>
 	<c:if test="${empty userLogged}">
-		<a class="btn" href="#inline" data-lity="">Login</a>
-<!-- 		<button id="loginButton" class="Button">login</button> -->
-		<form action="register">
+		<form action='#' onsubmit="lightbox('#inline');">
+		<input type="submit" value="Login" class="Button">
+		</form>
+
+		<form action="#" onsubmit="lightbox('#inline2')">
 		<input type="submit" value="Register" class="Button">
 		</form>
+		<c:if test="${not empty errorMessage}">
+			<c:out value="${errorMessage}"/>			
+		</c:if>
 	</c:if>
 </div>
-</head>
-<body>
 <c:choose>
 	<c:when test="${not empty userLogged}">
 		<jsp:include page="ShareholderHeader.jsp"></jsp:include>
@@ -62,15 +67,31 @@
 				</c:otherwise>
 			</c:choose>
 			</div>
-				<div id="inline" style="background:#fff" class="lity-hide">
-					<p class="Title">LOGIN</p>
-					<sf:form action="Login" method="POST" modelAttribute="account">
-						<fieldset>
-							<sf:label path="username"> Username </sf:label>
-							<sf:input type="text" path="username" placeholder="Username"
-								required="true" />
-							<sf:label path="password"> Password </sf:label>
-							<sf:input type="password" path="password" placeholder="Password"
+			<div id="inline2" style="background:#fff" class="lity-hide">
+				<p class="Title">Register</p>
+				
+					<sf:form modelAttribute="account"
+			method="POST" action="completeRegistration">
+				<fieldset>
+					<sf:label path="username" for="username">User Name:</sf:label>
+					<sf:input path="username" name="username" id="username"/>
+					<sf:errors path="username" cssClass="formError" />
+					<sf:label path="password" for="password">Password:</sf:label>
+					<sf:input path="password" type="password" name="password" id="password" />
+					<sf:errors path="password" cssClass="formError" />
+					<input type="submit" value="Register" />
+				</fieldset>
+		</sf:form>
+		</div>
+			<div id="inline" style="background:#fff" class="lity-hide">
+				<p class="Title">LOGIN</p>
+				<sf:form action="Login" method="POST" modelAttribute="account">
+					<fieldset>
+						<sf:label path="username"> Username </sf:label>
+						<sf:input type="text" path="username" placeholder="Username"
+							required="true" />
+						<sf:label path="password"> Password </sf:label>
+						<sf:input type="password" path="password" placeholder="Password"
 								required="true" pattern=".{6,}" />
 							<input type="submit" value="Click Here" />
 						</fieldset>
@@ -122,6 +143,7 @@
 		</p>
 	</div>
 <script type="text/javascript">
+var lightbox = lity();
 $("#email").attr('required','');
 $("#password").attr('required','');
 </script>

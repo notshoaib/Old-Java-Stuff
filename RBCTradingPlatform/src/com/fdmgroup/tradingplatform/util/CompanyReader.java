@@ -39,7 +39,7 @@ public class CompanyReader {
               
               try {
                      PreparedStatement preparedStatment = connection.prepareStatement(query);
-                     ResultSet rs=preparedStatment.executeQuery();
+                     rs=preparedStatment.executeQuery();
                      
                      while(rs.next()){
                            Company comp = new Company();

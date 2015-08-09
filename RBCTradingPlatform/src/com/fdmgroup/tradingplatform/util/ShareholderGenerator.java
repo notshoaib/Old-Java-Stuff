@@ -41,7 +41,6 @@ public class ShareholderGenerator {
 
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -52,7 +51,7 @@ public class ShareholderGenerator {
 		try {
 			String query = properties.getProperty("ReadMaxID");
 			statement = connection.prepareStatement(query);
-			ResultSet rs = statement.executeQuery();
+			rs = statement.executeQuery();
 			rs.next();
 			id = rs.getInt(1);
 			query = properties.getProperty("CreateShareholder");

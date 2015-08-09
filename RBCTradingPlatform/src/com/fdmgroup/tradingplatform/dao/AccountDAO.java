@@ -119,7 +119,7 @@ public class AccountDAO implements ICrud<Account, Boolean, String> {
 
 	@Override
 	public List<Account> readAll(String i) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 	

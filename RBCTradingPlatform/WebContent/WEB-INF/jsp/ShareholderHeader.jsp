@@ -18,7 +18,7 @@
 		
 		<div id="Opaque" class="Opacity">
 		
-        <p class="Title"> Welcome Shareholder: ${sessionScope.user.username}!</p>
+        <p class="Title"> Welcome Shareholder: ${sessionScope.userAccount.username}!</p>
 
         What would you like to do:
 		<div id="menu" class="UserMenu">

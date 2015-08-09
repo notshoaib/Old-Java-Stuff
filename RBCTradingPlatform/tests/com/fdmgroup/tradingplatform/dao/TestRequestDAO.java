@@ -1,15 +1,13 @@
 package com.fdmgroup.tradingplatform.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.fdmgroup.tradingplatform.enums.RequestBuySellType;
 import com.fdmgroup.tradingplatform.enums.RequestStatus;
 import com.fdmgroup.tradingplatform.enums.TimeInForce;
-import com.fdmgroup.tradingplatform.pojo.Account;
 import com.fdmgroup.tradingplatform.pojo.Request;
 
 public class TestRequestDAO {
