@@ -24,11 +24,11 @@
 	<img id="Logo" src="resources/images/logo.jpg" />
 	<p class="CallUs">Call Us: 567-8309</p>
 	<c:if test="${empty userLogged}">
-		<form action='#' onsubmit="lightbox('#inline');">
+		<form id="loginForm">
 		<input type="submit" value="Login" class="Button">
 		</form>
 
-		<form action="#" onsubmit="lightbox('#inline2')">
+		<form id="regForm">
 		<input type="submit" value="Register" class="Button">
 		</form>
 		<c:if test="${not empty errorMessage}">
@@ -136,14 +136,21 @@
 			src="resources/images/round-images4.png"></a>
 		<p>
 		<p class="Title">TP Services</p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec
-		vestibulum urna. Mauris condimentum consectetur magna, ut molestie
-		lorem elementum eget. Praesent lectus dui, dictum consequat molestie
-		quis, bibendum a risus.
+		We help millions of individual investors around the world meet their financial goals.
+		We are the home of American Funds in the U.S., and also offer investment funds and mutual
+		funds in Australia, Canada, Europe and Japan. 
 		</p>
 	</div>
 <script type="text/javascript">
 var lightbox = lity();
+$( "#loginForm" ).submit(function( event ) {
+	  lightbox('#inline');
+	  return false;
+});
+$( "#regForm" ).submit(function( event ) {
+		lightbox('#inline2');
+		return false;
+});
 $("#email").attr('required','');
 $("#password").attr('required','');
 </script>
