@@ -109,7 +109,8 @@ public class HomeController {
 		newUser.setShareHolderId(id);
 		accountDAO.create(newUser);
 		model.addAttribute("first",newUser.getUsername());
-		return "PostRegisterJSP";
+		model.addAttribute("registrationMessage","Thank you for registering");
+		return "tradingplatformhome";
 	}
 
 	@RequestMapping(value = "/viewtrades", method = RequestMethod.GET)
@@ -119,7 +120,6 @@ public class HomeController {
 		List<Trade> tradeList = tradeReader
 				.readAllTrades(account.getUsername());
 		model.addAttribute("tradelist", tradeList);
-
 		return "viewtrades";
 	}
 
