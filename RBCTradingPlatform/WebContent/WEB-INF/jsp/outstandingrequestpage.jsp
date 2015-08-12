@@ -14,14 +14,14 @@
 	type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<title>Request Trade</title>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<title>Outstanding Requests</title>
 </head>
 <body>
 <%@ include file="ShareholderHeader.jsp" %>
 <div class="wrapper">
 <div class="ActivityContainer">
 	<p>Request Trade:</p>
-		   	<th>TABLE 1</th>
 		   	<table class="table--class">
 				<tr>
 					<td>Request ID</td>

@@ -123,8 +123,9 @@
 	<div id="OnlineBrokerage">
 		<a href="onlinebrokerage.html"><img class="CircleImage"
 			src="resources/images/round-images3.png"></a>
-		<p>
+		
 		<p class="Title">Online Brokrage</p>
+		<p>
 		Founded in 2015, The Trading Platform's mission is to "Create technology to provide
 		liquidity on better terms. Compete on price, speed, size, diversity of global products
 		and advanced trading tools.""
@@ -134,8 +135,9 @@
 	<div id="TPServices">
 		<a href="tpservices.html"><img class="CircleImage"
 			src="resources/images/round-images4.png"></a>
-		<p>
+		
 		<p class="Title">TP Services</p>
+		<p>
 		We help millions of individual investors around the world meet their financial goals.
 		We are the home of American Funds in the U.S., and also offer investment funds and mutual
 		funds in Australia, Canada, Europe and Japan. 

@@ -78,7 +78,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 	public Request read(Integer requestId) {
 		String query = properties.getProperty("ReadRequest");
 		Integer shareholderId=null;
-		java.util.Date requestDate=null;
+		java.sql.Timestamp requestDate=null;
 		RequestBuySellType requestType=null;
 		RequestStatus requestStatus=null;
 		Integer stockExId=null;
@@ -95,7 +95,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 			rs = statement.executeQuery();
 			while (rs.next()) {
 				shareholderId=rs.getInt(1);
-				requestDate= rs.getTime(2);
+				requestDate= rs.getTimestamp(2);
 				requestType=RequestBuySellType.valueOf((rs.getString(3)));
 				requestStatus=RequestStatus.valueOf(rs.getString(4));
 				stockExId=rs.getInt(5);
@@ -176,7 +176,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 			List<Request> allRequests = new ArrayList<Request>();
 			String query = properties.getProperty("ReadOutstandingRequest");
 			Integer requestId=null;
-			java.util.Date requestDate=null;
+			java.sql.Timestamp requestDate=null;
 			RequestBuySellType requestType=null;
 			RequestStatus requestStatus=null;
 			Integer stockExId=null;
@@ -193,7 +193,7 @@ public class RequestDAO implements ICrud<Request, Boolean, Integer>{
 				rs = statement.executeQuery();
 				while (rs.next()) {
 					requestId=rs.getInt(1);
-					requestDate= rs.getTime(2);
+					requestDate= rs.getTimestamp(2);
 					requestType=RequestBuySellType.valueOf((rs.getString(3)));
 					requestStatus=RequestStatus.valueOf(rs.getString(4));
 					stockExId=rs.getInt(5);

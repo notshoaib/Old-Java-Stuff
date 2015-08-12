@@ -51,16 +51,16 @@
 .table--class td{
 	vertical-align:middle;
 	
-	background-color:#6699cc;
+	background-color:#ffffff;
 
 	border:1px solid #4c7299;
 	border-width:0px 1px 1px 0px;
 	text-align:left;
 	padding:7px;
-	font-size:10px;
+	font-size:12px;
 	font-family:Arial;
-	font-weight:normal;
-	color:#ffffff;
+	font-weight:bold;
+	color:#3399FF;
 }.table--class tr:last-child td{
 	border-width:0px 1px 0px 0px;
 }.table--class tr td:last-child{

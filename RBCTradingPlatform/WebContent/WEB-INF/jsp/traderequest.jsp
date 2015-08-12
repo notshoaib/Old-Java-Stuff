@@ -34,11 +34,14 @@
 											<input type="hidden" name="dateLong" id="requestDate" />
 										</li>
 										<li>
-											<label for="company">Select Company</label>
-											<sf:select path="stock_id" required="required" mutltiple="false">
-												<option label="--- Select Company ---" />
-												<sf:options items="${compList}" itemValue="stockId" itemLabel="compName"/>
-											</sf:select>
+<!-- 											<div class="dropdown"> -->
+<!-- 												<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials -->
+												<label for="company">Select Company</label>
+												<sf:select path="stock_id" required="required" mutltiple="false">
+													<option label="--- Select Company ---" />
+													<sf:options items="${compList}" itemValue="stockId" itemLabel="compName"/>
+												</sf:select>
+<!-- 											</div> -->
 										</li>
 									</ul>
 								</div>
@@ -93,7 +96,7 @@
 	<script type="text/javascript">
 		var x = new Date().toTimeString();
 		$("#visibleDate").val(new Date().toTimeString());
-		$("#requestDate").val(new Date().getMilliseconds());
+		$("#requestDate").val(new Date().getTime());
 	</script>
 
 </body>

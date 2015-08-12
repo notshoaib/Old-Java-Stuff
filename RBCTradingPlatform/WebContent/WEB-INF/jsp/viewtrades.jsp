@@ -14,12 +14,13 @@
 	type="text/css" />
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<title>Request Trade</title>
+<title>View Trades</title>
 
 <script>
 
 		 function getDate()
 		{
+			var result_from_Date_getTime = ${resultDate} 
 			var date = new Date;
 			date.setTime(result_from_Date_getTime);
 			var day = date.getDate();
@@ -39,13 +40,10 @@
 </head>
 <body>
 <%@ include file="ShareholderHeader.jsp" %>
-
+<div class="wrapper">
 <div class="ActivityContainer">
-	<p>Request Trade:</p>
-		<div class="History">
-		   <div class="request">
-		   	<th>TABLE 1</th>
-		   	<table>
+		   	<p>View Trades:</p>
+		   	<table class="table--class">
 				<tr>
 					<td>Stock Exchange ID</td>
 					<td>Stock ID</td>
@@ -71,8 +69,6 @@
 			</c:forEach>
 				</table>
 			</div>
-		</div>
-
 </div>
 
 

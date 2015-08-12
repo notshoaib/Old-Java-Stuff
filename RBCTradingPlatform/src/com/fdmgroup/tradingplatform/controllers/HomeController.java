@@ -1,5 +1,6 @@
 package com.fdmgroup.tradingplatform.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class HomeController {
 		
 		RequestDAO requestDao = new RequestDAO();
 		StockExReader stexreader = new StockExReader();
-		Long date = (Long)request.getAttribute("dateLong");
+		Long date = Long.valueOf(request.getParameter("dateLong"));
 		
 		newRequest.setRequestDate(new java.sql.Timestamp(date));
 		newRequest.setShareholder_id(account.getShareHolderId());
@@ -119,6 +120,8 @@ public class HomeController {
 		TradeReader tradeReader = new TradeReader();
 		List<Trade> tradeList = tradeReader
 				.readAllTrades(account.getUsername());
+		System.out.println();
+		
 		model.addAttribute("tradelist", tradeList);
 		return "viewtrades";
 	}
@@ -126,7 +129,7 @@ public class HomeController {
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(HttpSession session, Model model) {
 		session.invalidate();
-		model.asMap().clear();
+		model.asMap().clear(); 
 		Account account = new Account();
 		model.addAttribute(account);
 		return "tradingplatformhome";
