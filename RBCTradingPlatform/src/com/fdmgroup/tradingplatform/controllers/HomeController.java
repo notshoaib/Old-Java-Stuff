@@ -1,6 +1,5 @@
 package com.fdmgroup.tradingplatform.controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -86,13 +85,6 @@ public class HomeController {
 		model.addAttribute("success","success");
 		return "traderequest";
 	}
-
-//	@RequestMapping(value = "/register", method = RequestMethod.GET)
-//	public String register(Model model) {
-//		model.addAttribute("account", new Account());
-//		model.addAttribute("register", "true");
-//		return "tradingplatformhome";
-//	}
 	
 	@RequestMapping(value = "/completeRegistration", method = RequestMethod.POST)
 	public String completeRegistration(@ModelAttribute("newUser")Account newUser, Model model){
