@@ -1,5 +1,6 @@
 package com.fdmgroup.tradingplatform.actions;
 
+import com.fdmgroup.tradingplatform.dao.AccountDAO;
 import com.fdmgroup.tradingplatform.pojo.Account;
 
 public class LoginAction {
