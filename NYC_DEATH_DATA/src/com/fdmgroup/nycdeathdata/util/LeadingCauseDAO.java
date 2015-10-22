@@ -47,11 +47,12 @@ public class LeadingCauseDAO {
 	public Year countAggregate(String leadingCause, int year){
 		
 		em= JPAManager.getEntityManager();
-		Query query = em.createNativeQuery("Select count(*) from LeadingCause where causeofdeath= ?, year = ?"
+		Query query = em.createNativeQuery("Select count(*) from LeadingCause where causeofdeath= ? and year = ?"
 				);
 		query.setParameter(1, leadingCause);
 		query.setParameter(2, year);
 		BigDecimal count= (BigDecimal)query.getSingleResult();
+		em.close();
 		return new Year(leadingCause, count);
 	}
 }
