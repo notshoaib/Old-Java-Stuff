@@ -1,11 +1,36 @@
 package com.fdmgroup.nycdeathdata.util;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.TableGenerator;
+
+@Entity
 public class LeadingCause {
+	
+	@Id
+	@TableGenerator(name="COMP",
+	table="LEADINGCAUSE_IDGEN",
+    pkColumnName="GEN_NAME",
+    valueColumnName="GEN_VAL",
+    pkColumnValue="LeadingCause_Gen")
+    @GeneratedValue(strategy=GenerationType.TABLE, generator="COMP")
+	@Column(name="stream_id",columnDefinition="NUMBER(10,0)")
+	private int causeId;
+	@Column(columnDefinition="Number (5,0)")
 	private int year;
+	@Column()
 	private String ethnicity;
+	@Column()
 	private Sex sex;
+	@Column()
 	private String causeOfDeath;
+	@Column()
 	private int count;
+	
+	@Column(columnDefinition="Number (4,2)")
 	private double percentage;
 	
 	
@@ -18,6 +43,10 @@ public class LeadingCause {
 		this.causeOfDeath = causeOfDeath;
 		this.count = count;
 		this.percentage = percentage;
+	}
+	
+	public LeadingCause(){
+		
 	}
 
 	public int getYear() {
