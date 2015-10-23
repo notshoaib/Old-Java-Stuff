@@ -24,7 +24,7 @@
       	
       	<c:if test="${year==2008}">
       	<th data-graph-hidden="1">
-      	<c:out value="${yearlist.cause}"/>
+      	<c:out value="${yearlist.causeOfDeath}"/>
       	</th>
       	</c:if>
       
