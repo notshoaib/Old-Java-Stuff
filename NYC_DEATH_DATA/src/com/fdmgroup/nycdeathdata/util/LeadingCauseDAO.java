@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 
@@ -47,11 +48,18 @@ public class LeadingCauseDAO {
 	public Year countAggregate(String leadingCause, int year){
 		
 		em= JPAManager.getEntityManager();
-		Query query = em.createNativeQuery("Select sum(count) from LeadingCause where causeofdeath= ? and year = ?"
+		Query query = em.createNativeQuery("Select count from YearSummary where causeofdeath= ? and year = ?"
 				);
 		query.setParameter(1, leadingCause);
 		query.setParameter(2, year);
-		BigDecimal count= (BigDecimal)query.getSingleResult();
+		BigDecimal count;
+		try{
+		count= (BigDecimal)query.getSingleResult();
+		}
+		catch (NoResultException e){
+			count= new BigDecimal(0.0);
+			
+		}
 		em.close();
 		return new Year(leadingCause, count);
 	}

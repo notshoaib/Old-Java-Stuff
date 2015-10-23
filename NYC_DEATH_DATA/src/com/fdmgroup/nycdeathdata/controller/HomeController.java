@@ -64,7 +64,7 @@ public class HomeController {
 				Year year = leadingCauseDAO.countAggregate(leadingCause
 				, theyear);
 				map.get(theyear).add(year);
-		counter=counter++;
+		counter=counter+1;
 		System.out.println(counter);
 		}
 		}
