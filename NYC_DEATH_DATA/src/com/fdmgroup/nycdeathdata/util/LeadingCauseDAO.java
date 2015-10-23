@@ -47,7 +47,7 @@ public class LeadingCauseDAO {
 	public Year countAggregate(String leadingCause, int year){
 		
 		em= JPAManager.getEntityManager();
-		Query query = em.createNativeQuery("Select count(*) from LeadingCause where causeofdeath= ? and year = ?"
+		Query query = em.createNativeQuery("Select sum(count) from LeadingCause where causeofdeath= ? and year = ?"
 				);
 		query.setParameter(1, leadingCause);
 		query.setParameter(2, year);

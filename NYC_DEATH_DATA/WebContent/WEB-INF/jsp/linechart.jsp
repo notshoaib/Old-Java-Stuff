@@ -11,7 +11,9 @@
 <table class="highchart" 
   data-graph-container="#highchart-container" 
   data-graph-type="line"
-  use data-graph-container-before="1">
+  data-graph-height="1200"
+  data-graph-container-before="1"
+  >
   
   <caption>Column example</caption>
   <thead>
@@ -21,7 +23,7 @@
       	<c:forEach var="yearlist" items='${map[year]}'>
       	
       	<c:if test="${year==2008}">
-      	<th>
+      	<th data-graph-hidden="1">
       	<c:out value="${yearlist.cause}"/>
       	</th>
       	</c:if>
