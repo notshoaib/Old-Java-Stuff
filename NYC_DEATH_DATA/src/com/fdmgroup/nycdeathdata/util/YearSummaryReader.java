@@ -16,12 +16,12 @@ public class YearSummaryReader {
 	private Connection connection;
 	
 	
-	public ArrayList<YearSummaryC> readAllYearSummary(int year) throws SQLException{
+	public List<YearSummaryC> readAllYearSummary(int year) throws SQLException{
 		DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
 		connection=DriverManager.getConnection("jdbc:oracle:thin:@oracle.fdmgroup.com:1521:xe","mohamadsalimi","NewSql101");
 		PreparedStatement statement = connection.prepareStatement("Select * from YearSummary where year = ?");
 		statement.setInt(1, year);
-		ArrayList<YearSummaryC> list = new ArrayList<YearSummaryC>();
+		List<YearSummaryC> list = new ArrayList<YearSummaryC>();
 		ResultSet rs = statement.executeQuery();
 		
 		while(rs.next()){

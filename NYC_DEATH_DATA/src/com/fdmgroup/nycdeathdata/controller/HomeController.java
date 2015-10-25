@@ -2,6 +2,7 @@ package com.fdmgroup.nycdeathdata.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -39,14 +40,8 @@ public class HomeController {
 		LeadingCauseDAO leadingCauseDAO = new LeadingCauseDAO();
 //		List<LeadingCause> list =leadingCauseDAO.readAll();
 		
-		Map<Integer, ArrayList<YearSummaryC>> map = new HashMap<Integer,ArrayList<YearSummaryC>>();
+		Map<Integer, List<YearSummaryC>> map = new HashMap<Integer,List<YearSummaryC>>();
 		YearSummaryReader ysr = new YearSummaryReader();
-		map.put(2007, ysr.readAllYearSummary(2007));
-		map.put(2008, ysr.readAllYearSummary(2008));
-		map.put(2009, ysr.readAllYearSummary(2009));
-		map.put(2010, ysr.readAllYearSummary(2010));
-		map.put(2011, ysr.readAllYearSummary(2011));
-		
 		
 		List<Integer> yearList = new ArrayList<Integer>();
 		yearList.add(2007);
@@ -54,32 +49,18 @@ public class HomeController {
 		yearList.add(2009);
 		yearList.add(2010);
 		yearList.add(2011);
-//		
-//		Set<String> leadingCauseSet = new HashSet<String>();
-//		int counter=0;
-//		for(LeadingCause leadingCause: list){
-//			leadingCauseSet.add(leadingCause.getCauseOfDeath());
-//		}
-//		
-//		
-//		for(String leadingCause: leadingCauseSet){
-//			for(Integer theyear:yearList){
-//				Year year = leadingCauseDAO.countAggregate(leadingCause
-//				, theyear);
-//				map.get(theyear).add(year);
-//		counter=counter+1;
-//		System.out.println(counter);
-//		}
-//		}
 		
-//		for(LeadingCause leadingCause: list){
-//		Year year = leadingCauseDAO.countAggregate(leadingCause.getCauseOfDeath()
-//				, leadingCause.getYear());
-//		map.get(leadingCause.getYear()).add(year);
-//		counter=counter++;
-//		System.out.println(counter);
-//		}
 		
+		for(int year: yearList){
+			List<YearSummaryC> list =ysr.readAllYearSummary(year);
+			Collections.sort(list);
+			map.put(year,list);
+		}
+		
+		
+				
+		
+	
 	
 		model.addAttribute("map",map);
 		model.addAttribute("years", yearList);

@@ -3,11 +3,30 @@
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Line chart</title>
+<link href="resources/css/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
+
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        NYC Causes of Death
+                    </a>
+                </li>
+                <li>
+                    <a href="/NYC_DEATH_DATA">Home</a>
+                </li>
+                <li>
+                    <a href="linechart">View Chart</a>
+                </li>
+            </ul>
+        </div>
 <table class="highchart" 
   data-graph-container="#highchart-container" 
   data-graph-type="line"

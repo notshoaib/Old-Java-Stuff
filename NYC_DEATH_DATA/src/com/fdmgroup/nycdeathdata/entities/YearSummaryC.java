@@ -3,7 +3,7 @@ package com.fdmgroup.nycdeathdata.entities;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class YearSummaryC {
+public class YearSummaryC implements Comparable {
 
 	
 	public YearSummaryC(int yearOf, String causeOfDeath2, int count2) {
@@ -41,4 +41,12 @@ public class YearSummaryC {
 		this.count = count;
 	}
 	private int count;
+
+	@Override
+	public int compareTo(Object arg0) {
+		if(arg0 instanceof YearSummaryC){
+		return this.causeOfDeath.compareTo(((YearSummaryC)arg0).causeOfDeath);
+		}
+		return 0;
+	}
 }

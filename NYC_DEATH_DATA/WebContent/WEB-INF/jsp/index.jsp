@@ -7,12 +7,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/simple-sidebar.css" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/jquery-ui.min.css">
 	<link rel="stylesheet" href="resources/css/jquery-ui.structure.min.css">
 	<link rel="stylesheet" href="resources/css/jquery-ui.theme.min.css">
 	<link rel="stylesheet" href="resources/css/dataTables.jqueryui.min.css">
 </head>
 <body>
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        NYC Causes of Death
+                    </a>
+                </li>
+                <li>
+                    <a href="/NYC_DEATH_DATA">Home</a>
+                </li>
+                <li>
+                    <a href="linechart">View Chart</a>
+                </li>
+            </ul>
+        </div>
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
