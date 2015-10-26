@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>NYC Leading Causes of Death</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/simple-sidebar.css" rel="stylesheet">
 	<link rel="stylesheet" href="resources/css/jquery-ui.min.css">
@@ -17,21 +17,18 @@
 <div id="wrapper">
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        NYC Causes of Death
-                    </a>
-                </li>
-                <li>
-                    <a href="/NYC_DEATH_DATA">Home</a>
-                </li>
-                <li>
-                    <a href="linechart">View Chart</a>
-                </li>
-            </ul>
-        </div>
+   <div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="navbar-header">
+		<ul class="nav navbar-nav">
+			<li ><a href="#"> NYC Causes of Death </a>
+			</li>
+			<li><a href="/NYC_DEATH_DATA">Home</a></li>
+			<li><a href="linechart">View Chart</a></li>
+		</ul>
+		</div>
+		</nav>
+	</div>
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -75,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        
         <!-- /#page-content-wrapper -->
 
     </div>
@@ -95,7 +92,10 @@ $(document).ready(function() {
     $('#traineetable').DataTable();
 } );
 
-
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
 
 </script >
 </body>
