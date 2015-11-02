@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<!-- Bean declarations go here -->
+
+<context:annotation-config />
+
+
+	<bean id="gang" class="com.fdm.buildings.Person" scope="prototype" autowire-candidate="false">
+		<property name="name" value="Gang Zhao" />
+		<property name="job" value="Architetct?" />
+	</bean>
+
+	<bean id="gangyang" class="com.fdm.buildings.Person">
+		<property name="name" value="Gangyang" />
+		<property name="job" value="DEVELOPER!!!" />
+	</bean>
+
+	<bean id="myhouse" class="com.fdm.buildings.House" init-method="init" >
+	</bean>
+
+	<bean id="myAddress" class="com.fdm.buildings.Address">
+		<constructor-arg name="number" value="14"></constructor-arg>
+		<constructor-arg name="street" value="Wall Street"></constructor-arg>
+	</bean>
+
+	<bean id="fdm" class="com.fdm.buildings.Company">
+		<property name="name" value="FDM"></property>
+		<property name="type">
+			<value type="com.fdm.buildings.Type">NONPROFIT</value>
+		</property>
+	</bean>
+	<bean id="google" class="com.fdm.buildings.Company">
+		<property name="name" value="Google"></property>
+		<property name="type">
+			<value type="com.fdm.buildings.Type">ACADEMIC</value>
+		</property>
+
+	</bean>
+	<bean id="officeBuilding" class="com.fdm.buildings.OfficeBuilding">
+		<property name="companies">
+			<util:set set-class="java.util.HashSet">
+				<ref bean="fdm"></ref>
+				<ref bean="google"></ref>
+			</util:set>
+
+		</property>
+
+
+
+	</bean>
+	
+	<bean id="personFactory" class="com.fdm.buildings.PersonFactory" 
+	factory-method="getPerson" autowire-candidate="false"/>
+
+
+</beans>
